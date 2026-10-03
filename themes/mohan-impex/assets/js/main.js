@@ -614,6 +614,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (header2MobileOverlay) header2MobileOverlay.classList.remove("active");
         document.body.style.overflow = "";
     }
+
+    // Clear a stale inline scroll lock after a back/forward navigation.
+    closeMobileMenu();
+
     if (header2Toggle) {
         header2Toggle.addEventListener("click", function () {
             if (header2MobileMenu && header2MobileMenu.classList.contains("active")) {

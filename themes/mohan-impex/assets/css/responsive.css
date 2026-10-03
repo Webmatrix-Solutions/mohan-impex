@@ -4964,6 +4964,13 @@
 }
 /* ── Hero Section — Mobile Height Fix ───────────────────── */
 @media (max-width: 991px) {
+    .hero2-video-wrap,
+    .hero2-overlay-dark,
+    .hero2-overlay-gradient,
+    .hero2-grid-overlay {
+        pointer-events: none;
+    }
+
     .hero2-section {
         min-height: unset;
         height: auto;
