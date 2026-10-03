@@ -1,0 +1,32 @@
+[mysqld]
+# Mohan Impex - MySQL 8.0 Configuration
+
+# Character set
+character-set-server  = utf8mb4
+collation-server      = utf8mb4_unicode_ci
+
+# Performance
+innodb_buffer_pool_size         = 256M
+innodb_redo_log_capacity        = 128M
+innodb_flush_log_at_trx_commit  = 2
+innodb_flush_method             = O_DIRECT
+
+# Connection
+max_connections      = 100
+max_allowed_packet   = 64M
+wait_timeout         = 600
+interactive_timeout  = 600
+
+# Slow query log
+slow_query_log       = 1
+slow_query_log_file  = /var/log/mysql/slow.log
+long_query_time      = 2
+
+# Disable binary logging (not needed for dev)
+skip-log-bin
+
+[client]
+default-character-set = utf8mb4
+
+[mysql]
+default-character-set = utf8mb4

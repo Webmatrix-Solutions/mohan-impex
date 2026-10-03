@@ -1,0 +1,58 @@
+{
+  "key": "group_counters_section",
+  "title": "Home \u2014 Counters Section",
+  "modified": 9999999999,
+  "fields": [
+    {
+      "key": "field_counters_list",
+      "label": "Counters",
+      "name": "counters_list",
+      "type": "repeater",
+      "instructions": "Add each animated counter item",
+      "min": 1,
+      "max": 8,
+      "layout": "table",
+      "button_label": "Add Counter",
+      "sub_fields": [
+        {
+          "key": "field_counter_icon",
+          "label": "Icon",
+          "name": "counter_icon",
+          "type": "text",
+          "instructions": "Font Awesome class without the 'fa-solid' prefix. e.g. fa-calendar-check",
+          "placeholder": "fa-calendar-check"
+        },
+        {
+          "key": "field_counter_target",
+          "label": "Number",
+          "name": "counter_target",
+          "type": "number",
+          "placeholder": "30"
+        },
+        {
+          "key": "field_counter_label",
+          "label": "Label",
+          "name": "counter_label",
+          "type": "text",
+          "placeholder": "Years of Legacy"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/counters-section"
+      }
+    ]
+  ],
+  "menu_order": 30,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Controls the animated counters section on the homepage"
+}

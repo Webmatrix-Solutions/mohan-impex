@@ -1,0 +1,122 @@
+{
+  "key": "group_partner_page",
+  "title": "Partner With Us Page",
+  "modified": 9999999999,
+  "fields": [
+    {
+      "key": "field_pw_tag",
+      "label": "Eyebrow Tag",
+      "name": "pw_tag",
+      "type": "text",
+      "placeholder": "Join Our Network"
+    },
+    {
+      "key": "field_pw_title",
+      "label": "Title",
+      "name": "pw_title",
+      "type": "text",
+      "placeholder": "Partner With"
+    },
+    {
+      "key": "field_pw_title_hl",
+      "label": "Title Highlight",
+      "name": "pw_title_hl",
+      "type": "text",
+      "placeholder": "Mohan Impex"
+    },
+    {
+      "key": "field_pw_subtitle",
+      "label": "Subtitle",
+      "name": "pw_subtitle",
+      "type": "text"
+    },
+    {
+      "key": "field_pw_desc",
+      "label": "Description",
+      "name": "pw_desc",
+      "type": "textarea",
+      "rows": 3
+    },
+    {
+      "key": "field_pw_benefits",
+      "label": "Benefits List",
+      "name": "pw_benefits",
+      "type": "repeater",
+      "button_label": "Add Benefit",
+      "layout": "table",
+      "sub_fields": [
+        {
+          "key": "field_pw_benefit",
+          "label": "Benefit",
+          "name": "pw_benefit",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "key": "field_pw_stat1_num",
+      "label": "Stat 1 Number",
+      "name": "pw_stat1_num",
+      "type": "text",
+      "placeholder": "30+"
+    },
+    {
+      "key": "field_pw_stat1_lbl",
+      "label": "Stat 1 Label",
+      "name": "pw_stat1_lbl",
+      "type": "text",
+      "placeholder": "Years in Business"
+    },
+    {
+      "key": "field_pw_stat2_num",
+      "label": "Stat 2 Number",
+      "name": "pw_stat2_num",
+      "type": "text",
+      "placeholder": "500+"
+    },
+    {
+      "key": "field_pw_stat2_lbl",
+      "label": "Stat 2 Label",
+      "name": "pw_stat2_lbl",
+      "type": "text",
+      "placeholder": "Active Partners"
+    },
+    {
+      "key": "field_pw_stat3_num",
+      "label": "Stat 3 Number",
+      "name": "pw_stat3_num",
+      "type": "text",
+      "placeholder": "Pan"
+    },
+    {
+      "key": "field_pw_stat3_sfx",
+      "label": "Stat 3 Suffix",
+      "name": "pw_stat3_sfx",
+      "type": "text",
+      "placeholder": "India"
+    },
+    {
+      "key": "field_pw_stat3_lbl",
+      "label": "Stat 3 Label",
+      "name": "pw_stat3_lbl",
+      "type": "text",
+      "placeholder": "Distribution Reach"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "templates/page-partner.php"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Fields for the Partner With Us page template"
+}

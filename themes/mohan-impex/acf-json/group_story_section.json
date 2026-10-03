@@ -1,0 +1,130 @@
+{
+  "key": "group_story_section",
+  "title": "Home — Story Section",
+  "modified": 9999999999,
+  "fields": [
+    {
+      "key": "field_story_eyebrow",
+      "label": "Eyebrow Text",
+      "name": "story_eyebrow",
+      "type": "text",
+      "placeholder": "Our Legacy Since 1994"
+    },
+    {
+      "key": "field_story_title",
+      "label": "Title",
+      "name": "story_title",
+      "type": "text",
+      "placeholder": "Built on Trust,"
+    },
+    {
+      "key": "field_story_title_highlight",
+      "label": "Title Highlight",
+      "name": "story_title_highlight",
+      "type": "text",
+      "placeholder": "Quality & Innovation"
+    },
+    {
+      "key": "field_story_description",
+      "label": "Description",
+      "name": "story_description",
+      "type": "textarea",
+      "rows": 4
+    },
+    {
+      "key": "field_story_image_main",
+      "label": "Main Image",
+      "name": "story_image_main",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium"
+    },
+    {
+      "key": "field_story_image_small",
+      "label": "Small Float Image",
+      "name": "story_image_small",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium"
+    },
+    {
+      "key": "field_story_badge_text",
+      "label": "Badge Text",
+      "name": "story_badge_text",
+      "type": "text",
+      "placeholder": "30+ Years of Excellence"
+    },
+    {
+      "key": "field_story_year",
+      "label": "Year Badge",
+      "name": "story_year",
+      "type": "text",
+      "placeholder": "1994"
+    },
+    {
+      "key": "field_story_btn_text",
+      "label": "Button Text",
+      "name": "story_btn_text",
+      "type": "text",
+      "placeholder": "Explore Our Legacy"
+    },
+    {
+      "key": "field_story_btn_url",
+      "label": "Button URL",
+      "name": "story_btn_url",
+      "type": "url",
+      "placeholder": "https://"
+    },
+    {
+      "key": "field_story_features",
+      "label": "Feature Items",
+      "name": "story_features",
+      "type": "repeater",
+      "instructions": "Add each feature item with icon, title and description",
+      "min": 1,
+      "max": 6,
+      "layout": "block",
+      "button_label": "Add Feature",
+      "sub_fields": [
+        {
+          "key": "field_feat_icon",
+          "label": "Icon",
+          "name": "feat_icon",
+          "type": "text",
+          "instructions": "Font Awesome class e.g. fa-fire-flame-curved",
+          "placeholder": "fa-fire-flame-curved"
+        },
+        {
+          "key": "field_feat_title",
+          "label": "Title",
+          "name": "feat_title",
+          "type": "text",
+          "placeholder": "Premium Quality Standards"
+        },
+        {
+          "key": "field_feat_text",
+          "label": "Text",
+          "name": "feat_text",
+          "type": "textarea",
+          "rows": 3
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/story-section"
+      }
+    ]
+  ],
+  "menu_order": 40,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Controls the About/Story section on the homepage"
+}

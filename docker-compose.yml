@@ -1,0 +1,79 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: mohan-impex-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./mysql/conf.d:/etc/mysql/conf.d
+    networks:
+      - mohan-impex-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  wordpress:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mohan-impex-wordpress
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+      WORDPRESS_TABLE_PREFIX: ${WORDPRESS_TABLE_PREFIX:-wp_}
+      WORDPRESS_DEBUG: ${WORDPRESS_DEBUG:-false}
+    volumes:
+      - wordpress_data:/var/www/html
+      - ./themes:/var/www/html/wp-content/themes
+      - ./plugins:/var/www/html/wp-content/plugins
+      - ./uploads:/var/www/html/wp-content/uploads
+      - ./php.ini:/usr/local/etc/php/conf.d/custom.ini
+    ports:
+      - "${WP_PORT:-8080}:80"
+    networks:
+      - mohan-impex-network
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: mohan-impex-phpmyadmin
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: ${MYSQL_USER}
+      PMA_PASSWORD: ${MYSQL_PASSWORD}
+      UPLOAD_LIMIT: 64M
+    ports:
+      - "${PMA_PORT:-8081}:80"
+    networks:
+      - mohan-impex-network
+
+volumes:
+  db_data:
+    name: mohan-impex-db-data
+  wordpress_data:
+    name: mohan-impex-wordpress-data
+
+networks:
+  mohan-impex-network:
+    name: mohan-impex-network
+    driver: bridge

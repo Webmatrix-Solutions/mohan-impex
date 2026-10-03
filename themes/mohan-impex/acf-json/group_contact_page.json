@@ -1,0 +1,108 @@
+{
+  "key": "group_contact_page",
+  "title": "Contact Page",
+  "modified": 9999999999,
+  "fields": [
+    {
+      "key": "field_cp_tag",
+      "label": "Tag Line",
+      "name": "cp_tag",
+      "type": "text",
+      "placeholder": "Get In Touch"
+    },
+    {
+      "key": "field_cp_title",
+      "label": "Title",
+      "name": "cp_title",
+      "type": "text",
+      "placeholder": "Let's Talk"
+    },
+    {
+      "key": "field_cp_title_hl",
+      "label": "Title Highlight",
+      "name": "cp_title_hl",
+      "type": "text",
+      "placeholder": "Food & More."
+    },
+    {
+      "key": "field_cp_desc",
+      "label": "Description",
+      "name": "cp_desc",
+      "type": "textarea",
+      "rows": 3
+    },
+    {
+      "key": "field_cp_address1",
+      "label": "Address Line 1",
+      "name": "cp_address1",
+      "type": "text"
+    },
+    {
+      "key": "field_cp_address2",
+      "label": "Address Line 2",
+      "name": "cp_address2",
+      "type": "text"
+    },
+    {
+      "key": "field_cp_phone",
+      "label": "Phone Number",
+      "name": "cp_phone",
+      "type": "text"
+    },
+    {
+      "key": "field_cp_email",
+      "label": "Email Address",
+      "name": "cp_email",
+      "type": "email"
+    },
+    {
+      "key": "field_cp_whatsapp",
+      "label": "WhatsApp Number (digits only)",
+      "name": "cp_whatsapp",
+      "type": "text",
+      "instructions": "Digits only, e.g. 919830000000"
+    },
+    {
+      "key": "field_cp_facebook",
+      "label": "Facebook URL",
+      "name": "cp_facebook",
+      "type": "url"
+    },
+    {
+      "key": "field_cp_instagram",
+      "label": "Instagram URL",
+      "name": "cp_instagram",
+      "type": "url"
+    },
+    {
+      "key": "field_cp_linkedin",
+      "label": "LinkedIn URL",
+      "name": "cp_linkedin",
+      "type": "url"
+    },
+    {
+      "key": "field_cp_map_url",
+      "label": "Google Maps Embed URL",
+      "name": "cp_map_url",
+      "type": "textarea",
+      "rows": 3,
+      "instructions": "Paste the src URL from the Google Maps embed iframe."
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "templates/page-contact.php"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Fields for the Contact Us page template"
+}

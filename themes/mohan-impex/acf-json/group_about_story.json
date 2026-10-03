@@ -1,0 +1,88 @@
+{
+  "key": "group_about_story",
+  "title": "About — Story Section",
+  "modified": 9999999999,
+  "fields": [
+    {
+      "key": "field_about_story_chapter",
+      "label": "Chapter Label",
+      "name": "about_story_chapter",
+      "type": "text",
+      "placeholder": "Chapter One"
+    },
+    {
+      "key": "field_about_story_title",
+      "label": "Title",
+      "name": "about_story_title",
+      "type": "text",
+      "placeholder": "Born from"
+    },
+    {
+      "key": "field_about_story_title_hl",
+      "label": "Title Highlight",
+      "name": "about_story_title_hl",
+      "type": "text",
+      "placeholder": "One Obsession"
+    },
+    {
+      "key": "field_about_story_body_1",
+      "label": "Body Paragraph 1",
+      "name": "about_story_body_1",
+      "type": "textarea",
+      "rows": 4
+    },
+    {
+      "key": "field_about_story_body_2",
+      "label": "Body Paragraph 2",
+      "name": "about_story_body_2",
+      "type": "textarea",
+      "rows": 4
+    },
+    {
+      "key": "field_about_story_img_top",
+      "label": "Top Image",
+      "name": "about_story_img_top",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium"
+    },
+    {
+      "key": "field_about_story_img_top_cap",
+      "label": "Top Image Caption",
+      "name": "about_story_img_top_cap",
+      "type": "text",
+      "placeholder": "Mohan Impex — Est. 1994"
+    },
+    {
+      "key": "field_about_story_img_bot",
+      "label": "Bottom Image",
+      "name": "about_story_img_bot",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium"
+    },
+    {
+      "key": "field_about_story_img_bot_cap",
+      "label": "Bottom Image Caption",
+      "name": "about_story_img_bot_cap",
+      "type": "text",
+      "placeholder": "Premium Ingredients, 2024"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/about-story"
+      }
+    ]
+  ],
+  "menu_order": 120,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Controls the story section on the About Us page"
+}

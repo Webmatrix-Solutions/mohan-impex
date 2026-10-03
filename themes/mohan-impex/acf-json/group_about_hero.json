@@ -1,0 +1,87 @@
+{
+  "key": "group_about_hero",
+  "title": "About — Hero Section",
+  "modified": 9999999999,
+  "fields": [
+    {
+      "key": "field_about_hero_eyebrow",
+      "label": "Eyebrow Text",
+      "name": "about_hero_eyebrow",
+      "type": "text",
+      "placeholder": "Est. 1994 — A story built on quality and trust"
+    },
+    {
+      "key": "field_about_hero_em",
+      "label": "H1 Italic Text",
+      "name": "about_hero_em",
+      "type": "text",
+      "placeholder": "Who We"
+    },
+    {
+      "key": "field_about_hero_highlight",
+      "label": "H1 Highlight Text",
+      "name": "about_hero_highlight",
+      "type": "text",
+      "placeholder": "Really Are."
+    },
+    {
+      "key": "field_about_hero_desc",
+      "label": "Description",
+      "name": "about_hero_desc",
+      "type": "textarea",
+      "rows": 3
+    },
+    {
+      "key": "field_about_hero_btn1_text",
+      "label": "Button 1 Text",
+      "name": "about_hero_btn1_text",
+      "type": "text",
+      "placeholder": "Our Story"
+    },
+    {
+      "key": "field_about_hero_btn1_url",
+      "label": "Button 1 URL",
+      "name": "about_hero_btn1_url",
+      "type": "url",
+      "placeholder": "#story"
+    },
+    {
+      "key": "field_about_hero_btn2_text",
+      "label": "Button 2 Text",
+      "name": "about_hero_btn2_text",
+      "type": "text",
+      "placeholder": "The Team"
+    },
+    {
+      "key": "field_about_hero_btn2_url",
+      "label": "Button 2 URL",
+      "name": "about_hero_btn2_url",
+      "type": "url",
+      "placeholder": "#team"
+    },
+    {
+      "key": "field_about_hero_btn2_icon",
+      "label": "Button 2 Icon",
+      "name": "about_hero_btn2_icon",
+      "type": "text",
+      "instructions": "Font Awesome class e.g. fa-users",
+      "placeholder": "fa-users"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/about-hero"
+      }
+    ]
+  ],
+  "menu_order": 100,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Controls the About Us page hero section"
+}

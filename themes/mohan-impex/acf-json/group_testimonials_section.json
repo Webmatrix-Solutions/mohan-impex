@@ -1,0 +1,123 @@
+{
+  "key": "group_testimonials_section",
+  "title": "Home — Testimonials Section",
+  "modified": 9999999999,
+  "fields": [
+    {
+      "key": "field_testi_bg",
+      "label": "Background Color",
+      "name": "testi_bg",
+      "type": "select",
+      "choices": { "warm": "Warm (#e9e0d2)", "white": "White (#ffffff)" },
+      "default_value": "warm"
+    },
+    {
+      "key": "field_testi_eyebrow",
+      "label": "Eyebrow Text",
+      "name": "testi_eyebrow",
+      "type": "text",
+      "placeholder": "Client Reviews"
+    },
+    {
+      "key": "field_testi_title",
+      "label": "Title",
+      "name": "testi_title",
+      "type": "text",
+      "placeholder": "Words From Our"
+    },
+    {
+      "key": "field_testi_title_hl",
+      "label": "Title Highlight",
+      "name": "testi_title_hl",
+      "type": "text",
+      "placeholder": "Happy Partners"
+    },
+    {
+      "key": "field_testi_overall_rating",
+      "label": "Overall Rating (pill)",
+      "name": "testi_overall_rating",
+      "type": "number",
+      "min": 1,
+      "max": 5,
+      "step": 0.1,
+      "placeholder": "4.9"
+    },
+    {
+      "key": "field_testi_review_count",
+      "label": "Review Count Label",
+      "name": "testi_review_count",
+      "type": "text",
+      "placeholder": "500+"
+    },
+    {
+      "key": "field_testi_reviews",
+      "label": "Reviews",
+      "name": "testi_reviews",
+      "type": "repeater",
+      "min": 1,
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_testi_name",
+          "label": "Name",
+          "name": "testi_name",
+          "type": "text"
+        },
+        {
+          "key": "field_testi_avatar",
+          "label": "Avatar Photo",
+          "name": "testi_avatar",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "thumbnail"
+        },
+        {
+          "key": "field_testi_rating",
+          "label": "Rating (1–5)",
+          "name": "testi_rating",
+          "type": "number",
+          "min": 1,
+          "max": 5,
+          "step": 0.5,
+          "default_value": 5
+        },
+        {
+          "key": "field_testi_text",
+          "label": "Review Text",
+          "name": "testi_text",
+          "type": "textarea",
+          "rows": 3
+        },
+        {
+          "key": "field_testi_source",
+          "label": "Source (e.g. Google Review)",
+          "name": "testi_source",
+          "type": "text"
+        },
+        {
+          "key": "field_testi_source_icon",
+          "label": "Source Icon Class (e.g. fab fa-google)",
+          "name": "testi_source_icon",
+          "type": "text",
+          "placeholder": "fab fa-google"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/testimonials-section"
+      }
+    ]
+  ],
+  "menu_order": 140,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Controls the testimonials slider section"
+}

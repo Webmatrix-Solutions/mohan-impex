@@ -1,0 +1,98 @@
+{
+  "key": "group_about_values",
+  "title": "About - Values Section",
+  "modified": 1788556800,
+  "fields": [
+    {
+      "key": "field_about_values_eyebrow",
+      "label": "Eyebrow Text",
+      "name": "about_values_eyebrow",
+      "type": "text",
+      "placeholder": "What We Believe In"
+    },
+    {
+      "key": "field_about_values_title",
+      "label": "Title",
+      "name": "about_values_title",
+      "type": "text",
+      "placeholder": "Our Values Define"
+    },
+    {
+      "key": "field_about_values_title_hl",
+      "label": "Title Highlight",
+      "name": "about_values_title_hl",
+      "type": "text",
+      "placeholder": "Every Partnership"
+    },
+    {
+      "key": "field_about_values_description",
+      "label": "Description",
+      "name": "about_values_description",
+      "type": "textarea",
+      "rows": 3
+    },
+    {
+      "key": "field_about_values_items",
+      "label": "Value Cards",
+      "name": "about_values_items",
+      "type": "repeater",
+      "min": 1,
+      "max": 4,
+      "layout": "block",
+      "button_label": "Add Value Card",
+      "sub_fields": [
+        {
+          "key": "field_about_values_item_title",
+          "label": "Title",
+          "name": "title",
+          "type": "text"
+        },
+        {
+          "key": "field_about_values_item_description",
+          "label": "Description",
+          "name": "description",
+          "type": "textarea",
+          "rows": 4
+        },
+        {
+          "key": "field_about_values_item_icon",
+          "label": "Icon Class",
+          "name": "icon",
+          "type": "text",
+          "placeholder": "fa-fire-flame-curved",
+          "instructions": "Enter a Font Awesome icon class without fa-solid, for example: fa-leaf."
+        },
+        {
+          "key": "field_about_values_item_link_text",
+          "label": "Link Text (Optional)",
+          "name": "link_text",
+          "type": "text",
+          "placeholder": "Learn more"
+        },
+        {
+          "key": "field_about_values_item_link_url",
+          "label": "Link URL (Optional)",
+          "name": "link_url",
+          "type": "url",
+          "placeholder": "https://"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/about-values"
+      }
+    ]
+  ],
+  "menu_order": 140,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Controls the values section on the About Us page"
+}

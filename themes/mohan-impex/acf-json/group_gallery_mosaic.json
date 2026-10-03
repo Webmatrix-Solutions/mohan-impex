@@ -1,0 +1,41 @@
+{
+  "key": "group_gallery_mosaic",
+  "title": "Gallery — Mosaic",
+  "modified": 9999999999,
+  "fields": [
+    {
+      "key": "field_gallery_items",
+      "label": "Gallery Items",
+      "name": "gallery_items",
+      "type": "repeater",
+      "min": 1,
+      "layout": "block",
+      "button_label": "Add Image",
+      "sub_fields": [
+        {
+          "key": "field_gallery_image",
+          "label": "Image",
+          "name": "gallery_image",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "thumbnail",
+          "library": "all"
+        },
+        {
+          "key": "field_gallery_caption",
+          "label": "Caption (optional — shown in lightbox)",
+          "name": "gallery_caption",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "location": [[{ "param": "block", "operator": "==", "value": "acf/gallery-mosaic" }]],
+  "menu_order": 151,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Gallery mosaic grid — repeater of images"
+}

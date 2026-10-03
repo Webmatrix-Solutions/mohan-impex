@@ -1,0 +1,93 @@
+{
+  "key": "group_team_section",
+  "title": "Home — Team Section",
+  "modified": 9999999999,
+  "fields": [
+    {
+      "key": "field_team_eyebrow",
+      "label": "Eyebrow Text",
+      "name": "team_eyebrow",
+      "type": "text",
+      "placeholder": "The People Behind Our Success"
+    },
+    {
+      "key": "field_team_title",
+      "label": "Title",
+      "name": "team_title",
+      "type": "text",
+      "placeholder": "Meet Our"
+    },
+    {
+      "key": "field_team_title_hl",
+      "label": "Title Highlight",
+      "name": "team_title_hl",
+      "type": "text",
+      "placeholder": "Leadership Team"
+    },
+    {
+      "key": "field_team_subtitle",
+      "label": "Subtitle",
+      "name": "team_subtitle",
+      "type": "textarea",
+      "rows": 2
+    },
+    {
+      "key": "field_team_members",
+      "label": "Team Members",
+      "name": "team_members",
+      "type": "repeater",
+      "instructions": "Add each team member",
+      "min": 1,
+      "max": 8,
+      "layout": "block",
+      "button_label": "Add Member",
+      "sub_fields": [
+        {
+          "key": "field_member_photo",
+          "label": "Photo",
+          "name": "member_photo",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "medium"
+        },
+        {
+          "key": "field_member_role",
+          "label": "Role / Position",
+          "name": "member_role",
+          "type": "text",
+          "placeholder": "Managing Director"
+        },
+        {
+          "key": "field_member_name",
+          "label": "Name",
+          "name": "member_name",
+          "type": "text",
+          "placeholder": "Full Name"
+        },
+        {
+          "key": "field_member_speciality",
+          "label": "Speciality",
+          "name": "member_speciality",
+          "type": "text",
+          "placeholder": "Leadership · Strategy · Growth"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/team-section"
+      }
+    ]
+  ],
+  "menu_order": 60,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Controls the leadership team section on the homepage"
+}

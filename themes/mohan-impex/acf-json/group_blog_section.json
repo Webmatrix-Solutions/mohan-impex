@@ -1,0 +1,75 @@
+{
+  "key": "group_blog_section",
+  "title": "Home — Blog Section",
+  "modified": 9999999999,
+  "fields": [
+    {
+      "key": "field_blog_eyebrow",
+      "label": "Eyebrow Text",
+      "name": "blog_eyebrow",
+      "type": "text",
+      "placeholder": "Latest Insights"
+    },
+    {
+      "key": "field_blog_title",
+      "label": "Title",
+      "name": "blog_title",
+      "type": "text",
+      "placeholder": "News, Tips &"
+    },
+    {
+      "key": "field_blog_title_hl",
+      "label": "Title Highlight",
+      "name": "blog_title_hl",
+      "type": "text",
+      "placeholder": "Industry Updates"
+    },
+    {
+      "key": "field_blog_description",
+      "label": "Description",
+      "name": "blog_description",
+      "type": "textarea",
+      "rows": 3
+    },
+    {
+      "key": "field_blog_btn_text",
+      "label": "Button Text",
+      "name": "blog_btn_text",
+      "type": "text",
+      "placeholder": "Read More Blogs"
+    },
+    {
+      "key": "field_blog_btn_url",
+      "label": "Button URL",
+      "name": "blog_btn_url",
+      "type": "url",
+      "placeholder": "https://"
+    },
+    {
+      "key": "field_blog_post_count",
+      "label": "Number of Posts",
+      "name": "blog_post_count",
+      "type": "number",
+      "default_value": 6,
+      "min": 1,
+      "max": 12,
+      "placeholder": "6"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/blog-section"
+      }
+    ]
+  ],
+  "menu_order": 80,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Controls the latest blog posts section on the homepage"
+}

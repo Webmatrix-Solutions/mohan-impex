@@ -1,0 +1,87 @@
+{
+  "key": "group_categories_section",
+  "title": "Home \u2014 Categories Section",
+  "modified": 9999999999,
+  "fields": [
+    {
+      "key": "field_categories_eyebrow",
+      "label": "Eyebrow Text",
+      "name": "categories_eyebrow",
+      "type": "text",
+      "placeholder": "Product Segments"
+    },
+    {
+      "key": "field_categories_title",
+      "label": "Title",
+      "name": "categories_title",
+      "type": "text",
+      "placeholder": "Explore Our"
+    },
+    {
+      "key": "field_categories_highlight",
+      "label": "Title \u2014 Highlighted Word",
+      "name": "categories_highlight",
+      "type": "text",
+      "instructions": "This word will be styled with the accent colour",
+      "placeholder": "Categories"
+    },
+    {
+      "key": "field_categories_desc",
+      "label": "Description",
+      "name": "categories_desc",
+      "type": "textarea",
+      "rows": 2
+    },
+    {
+      "key": "field_categories_list",
+      "label": "Categories",
+      "name": "categories_list",
+      "type": "repeater",
+      "instructions": "Add each product category card",
+      "min": 1,
+      "layout": "block",
+      "button_label": "Add Category",
+      "sub_fields": [
+        {
+          "key": "field_cat_name",
+          "label": "Category Name",
+          "name": "cat_name",
+          "type": "text",
+          "placeholder": "Beverages"
+        },
+        {
+          "key": "field_cat_image",
+          "label": "Category Image",
+          "name": "cat_image",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "medium",
+          "instructions": "Recommended size: 400 \u00d7 300px"
+        },
+        {
+          "key": "field_cat_url",
+          "label": "Link",
+          "name": "cat_url",
+          "type": "link",
+          "return_format": "array"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/categories-section"
+      }
+    ]
+  ],
+  "menu_order": 20,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Controls the Product Categories section on the homepage"
+}

@@ -1,0 +1,94 @@
+{
+  "key": "group_about_cta",
+  "title": "About — CTA Section",
+  "modified": 9999999999,
+  "fields": [
+    {
+      "key": "field_about_cta_tag",
+      "label": "Tag Line",
+      "name": "about_cta_tag",
+      "type": "text",
+      "placeholder": "A Partnership Awaits You"
+    },
+    {
+      "key": "field_about_cta_title",
+      "label": "Title",
+      "name": "about_cta_title",
+      "type": "text",
+      "placeholder": "Connect. Source. Grow."
+    },
+    {
+      "key": "field_about_cta_subtitle",
+      "label": "Subtitle",
+      "name": "about_cta_subtitle",
+      "type": "textarea",
+      "rows": 3
+    },
+    {
+      "key": "field_about_cta_btn_text",
+      "label": "Button Text",
+      "name": "about_cta_btn_text",
+      "type": "text",
+      "placeholder": "Get in Touch"
+    },
+    {
+      "key": "field_about_cta_btn_url",
+      "label": "Button URL",
+      "name": "about_cta_btn_url",
+      "type": "url",
+      "placeholder": "https://"
+    },
+    {
+      "key": "field_about_cta_image",
+      "label": "Right Side Image",
+      "name": "about_cta_image",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium"
+    },
+    {
+      "key": "field_about_cta_stat1_num",
+      "label": "Stat 1 Number",
+      "name": "about_cta_stat1_num",
+      "type": "text",
+      "placeholder": "4.9"
+    },
+    {
+      "key": "field_about_cta_stat1_lbl",
+      "label": "Stat 1 Label",
+      "name": "about_cta_stat1_lbl",
+      "type": "text",
+      "placeholder": "Average Partner Rating"
+    },
+    {
+      "key": "field_about_cta_stat2_num",
+      "label": "Stat 2 Number",
+      "name": "about_cta_stat2_num",
+      "type": "text",
+      "placeholder": "5000"
+    },
+    {
+      "key": "field_about_cta_stat2_lbl",
+      "label": "Stat 2 Label",
+      "name": "about_cta_stat2_lbl",
+      "type": "text",
+      "placeholder": "Customers Served Since 1994"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/about-cta"
+      }
+    ]
+  ],
+  "menu_order": 130,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Controls the CTA split section on the About Us page"
+}

@@ -1,0 +1,24 @@
+{
+  "key": "group_gallery_hero",
+  "title": "Gallery — Hero",
+  "modified": 9999999999,
+  "fields": [
+    { "key": "field_gal_hero_eyebrow",   "label": "Eyebrow Text",       "name": "gal_hero_eyebrow",   "type": "text" },
+    { "key": "field_gal_hero_em",        "label": "Title — Italic Part", "name": "gal_hero_em",        "type": "text" },
+    { "key": "field_gal_hero_highlight", "label": "Title — Highlight",   "name": "gal_hero_highlight", "type": "text" },
+    { "key": "field_gal_hero_desc",      "label": "Description",         "name": "gal_hero_desc",      "type": "textarea", "rows": 3 },
+    { "key": "field_gal_hero_btn1_text", "label": "Button 1 Text",       "name": "gal_hero_btn1_text", "type": "text" },
+    { "key": "field_gal_hero_btn1_url",  "label": "Button 1 URL",        "name": "gal_hero_btn1_url",  "type": "url" },
+    { "key": "field_gal_hero_btn2_text", "label": "Button 2 Text",       "name": "gal_hero_btn2_text", "type": "text" },
+    { "key": "field_gal_hero_btn2_url",  "label": "Button 2 URL",        "name": "gal_hero_btn2_url",  "type": "url" },
+    { "key": "field_gal_hero_btn2_icon", "label": "Button 2 Icon (FA class)", "name": "gal_hero_btn2_icon", "type": "text", "placeholder": "fa-envelope" }
+  ],
+  "location": [[{ "param": "block", "operator": "==", "value": "acf/gallery-hero" }]],
+  "menu_order": 150,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Controls the Gallery page hero banner"
+}

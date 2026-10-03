@@ -1,0 +1,91 @@
+{
+  "key": "group_faq_section",
+  "title": "Home — FAQ Section",
+  "modified": 9999999999,
+  "fields": [
+    {
+      "key": "field_faq_eyebrow",
+      "label": "Eyebrow Text",
+      "name": "faq_eyebrow",
+      "type": "text",
+      "placeholder": "FAQ"
+    },
+    {
+      "key": "field_faq_title",
+      "label": "Title",
+      "name": "faq_title",
+      "type": "text",
+      "placeholder": "Got a Question?"
+    },
+    {
+      "key": "field_faq_title_hl",
+      "label": "Title Highlight",
+      "name": "faq_title_hl",
+      "type": "text",
+      "placeholder": "We Have the Answer."
+    },
+    {
+      "key": "field_faq_description",
+      "label": "Description",
+      "name": "faq_description",
+      "type": "textarea",
+      "rows": 3
+    },
+    {
+      "key": "field_faq_contact_url",
+      "label": "Contact Button URL",
+      "name": "faq_contact_url",
+      "type": "url",
+      "placeholder": "https://"
+    },
+    {
+      "key": "field_faq_items",
+      "label": "FAQ Items",
+      "name": "faq_items",
+      "type": "repeater",
+      "instructions": "Add each question and answer",
+      "min": 1,
+      "layout": "block",
+      "button_label": "Add FAQ",
+      "sub_fields": [
+        {
+          "key": "field_faq_icon",
+          "label": "Icon",
+          "name": "faq_icon",
+          "type": "text",
+          "instructions": "Font Awesome class e.g. fa-box-open",
+          "placeholder": "fa-box-open"
+        },
+        {
+          "key": "field_faq_question",
+          "label": "Question",
+          "name": "faq_question",
+          "type": "text"
+        },
+        {
+          "key": "field_faq_answer",
+          "label": "Answer",
+          "name": "faq_answer",
+          "type": "textarea",
+          "rows": 4
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/faq-section"
+      }
+    ]
+  ],
+  "menu_order": 70,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Controls the FAQ section on the homepage"
+}

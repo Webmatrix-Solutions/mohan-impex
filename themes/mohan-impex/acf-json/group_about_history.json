@@ -1,0 +1,25 @@
+{
+  "key": "group_about_history_v2",
+  "title": "About - History Section V2",
+  "modified": 1788556800,
+  "fields": [
+    { "key": "field_about_history_eyebrow", "label": "Eyebrow Text", "name": "about_history_eyebrow", "type": "text", "placeholder": "Our History" },
+    { "key": "field_about_history_title", "label": "Title", "name": "about_history_title", "type": "text", "placeholder": "Our Journey Through" },
+    { "key": "field_about_history_title_hl", "label": "Title Highlight", "name": "about_history_title_hl", "type": "text", "placeholder": "The Years" },
+    { "key": "field_about_history_items", "label": "Timeline Cards", "name": "about_history_items", "type": "repeater", "min": 1, "layout": "block", "button_label": "Add Timeline Card", "sub_fields": [
+      { "key": "field_about_history_item_image", "label": "Image", "name": "image", "type": "image", "return_format": "array", "preview_size": "medium" },
+      { "key": "field_about_history_item_title", "label": "Title", "name": "title", "type": "text" },
+      { "key": "field_about_history_item_title_hl", "label": "Title Highlight", "name": "title_hl", "type": "text" },
+      { "key": "field_about_history_item_description", "label": "Description", "name": "description", "type": "textarea", "rows": 4 },
+      { "key": "field_about_history_item_node_icon", "label": "Timeline Icon Class", "name": "node_icon", "type": "text", "placeholder": "fa-seedling", "instructions": "Enter a Font Awesome class without fa-solid." },
+    ] },
+  ],
+  "location": [[{ "param": "block", "operator": "==", "value": "acf/about-history" }]],
+  "menu_order": 145,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Controls the history timeline on the About Us page"
+}

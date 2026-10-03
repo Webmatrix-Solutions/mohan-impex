@@ -1,0 +1,65 @@
+{
+  "key": "group_about_ticker",
+  "title": "About - Partners Section",
+  "modified": 9999999999,
+  "fields": [
+    {
+      "key": "field_about_ticker_title",
+      "label": "Section Title",
+      "name": "about_ticker_title",
+      "type": "text",
+      "placeholder": "Our Partners"
+    },
+    {
+      "key": "field_about_ticker_items",
+      "label": "Partner Logos",
+      "name": "about_ticker_items",
+      "type": "repeater",
+      "instructions": "Each logo is automatically duplicated for a seamless infinite scroll.",
+      "min": 1,
+      "layout": "block",
+      "button_label": "Add Partner Logo",
+      "sub_fields": [
+        {
+          "key": "field_partner_logo",
+          "label": "Logo",
+          "name": "partner_logo",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "medium",
+          "library": "all"
+        },
+        {
+          "key": "field_partner_name",
+          "label": "Partner Name",
+          "name": "partner_name",
+          "type": "text",
+          "instructions": "Used as the logo alt text when the uploaded image has no alt text."
+        },
+        {
+          "key": "field_partner_url",
+          "label": "Partner Website (Optional)",
+          "name": "partner_url",
+          "type": "url",
+          "placeholder": "https://"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/about-ticker"
+      }
+    ]
+  ],
+  "menu_order": 110,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Controls the scrolling partner logo strip on the About Us page"
+}

@@ -1,0 +1,131 @@
+{
+  "key": "group_team_page",
+  "title": "Our Team Page",
+  "modified": 9999999999,
+  "fields": [
+    {
+      "key": "field_team_page_members",
+      "label": "Team Members",
+      "name": "team_page_members",
+      "type": "repeater",
+      "instructions": "Add each team member. Middle card in each row (2nd, 5th, 8th...) automatically gets a dark style.",
+      "min": 1,
+      "layout": "block",
+      "button_label": "Add Member",
+      "sub_fields": [
+        {
+          "key": "field_tm_photo",
+          "label": "Photo",
+          "name": "tm_photo",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "medium"
+        },
+        {
+          "key": "field_tm_role",
+          "label": "Role / Title",
+          "name": "tm_role",
+          "type": "text",
+          "placeholder": "Managing Director"
+        },
+        {
+          "key": "field_tm_name",
+          "label": "Name",
+          "name": "tm_name",
+          "type": "text",
+          "placeholder": "Full Name"
+        },
+        {
+          "key": "field_tm_bio",
+          "label": "Bio",
+          "name": "tm_bio",
+          "type": "textarea",
+          "rows": 3,
+          "placeholder": "Short description about this team member..."
+        },
+        {
+          "key": "field_tm_badge",
+          "label": "Specialty Badge",
+          "name": "tm_badge",
+          "type": "text",
+          "instructions": "Short label shown on the image card (e.g. Strategy & Growth, Operations)",
+          "placeholder": "Strategy & Leadership"
+        }
+      ]
+    },
+    {
+      "key": "field_team_phil_icon",
+      "label": "Philosophy Icon",
+      "name": "team_phil_icon",
+      "type": "text",
+      "instructions": "Font Awesome class e.g. fa-handshake",
+      "placeholder": "fa-handshake",
+      "wrapper": { "width": "25" }
+    },
+    {
+      "key": "field_team_phil_title",
+      "label": "Philosophy Title",
+      "name": "team_phil_title",
+      "type": "text",
+      "placeholder": "Our Core Philosophy",
+      "wrapper": { "width": "75" }
+    },
+    {
+      "key": "field_team_phil_text",
+      "label": "Philosophy Text",
+      "name": "team_phil_text",
+      "type": "textarea",
+      "rows": 3
+    },
+    {
+      "key": "field_team_phil_pillars",
+      "label": "Philosophy Pillars",
+      "name": "team_phil_pillars",
+      "type": "repeater",
+      "instructions": "3 pillars recommended",
+      "min": 1,
+      "max": 4,
+      "layout": "table",
+      "button_label": "Add Pillar",
+      "sub_fields": [
+        {
+          "key": "field_pillar_icon",
+          "label": "Icon",
+          "name": "pillar_icon",
+          "type": "text",
+          "placeholder": "fa-seedling"
+        },
+        {
+          "key": "field_pillar_title",
+          "label": "Title",
+          "name": "pillar_title",
+          "type": "text",
+          "placeholder": "Quality First"
+        },
+        {
+          "key": "field_pillar_text",
+          "label": "Text",
+          "name": "pillar_text",
+          "type": "text",
+          "placeholder": "Premium ingredients, rigorously sourced"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "templates/page-team.php"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Fields for the Our Team page template"
+}

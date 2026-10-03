@@ -1,0 +1,129 @@
+{
+  "key": "group_product_segment",
+  "title": "Product Segment Fields",
+  "modified": 9999999999,
+  "fields": [
+    {
+      "key": "field_ps_gallery",
+      "label": "Gallery Images",
+      "name": "ps_gallery",
+      "type": "gallery",
+      "instructions": "Add product images. First image is the main display image.",
+      "return_format": "array",
+      "preview_size": "medium",
+      "min": 0,
+      "max": 8
+    },
+    {
+      "key": "field_ps_badge_text",
+      "label": "Badge Text",
+      "name": "ps_badge_text",
+      "type": "text",
+      "instructions": "e.g. Best Seller, New, Sale, Fan Favourite",
+      "placeholder": "Best Seller"
+    },
+    {
+      "key": "field_ps_badge_type",
+      "label": "Badge Style",
+      "name": "ps_badge_type",
+      "type": "select",
+      "instructions": "Controls the badge colour",
+      "choices": {
+        "badge-hot": "Hot (Gold)",
+        "badge-new": "New (Blue)",
+        "badge-sale": "Sale (Red)",
+        "badge-bestseller": "Best Seller (Dark)"
+      },
+      "default_value": "badge-hot",
+      "allow_null": 1,
+      "return_format": "value"
+    },
+    {
+      "key": "field_ps_subtitle_tag",
+      "label": "Subtitle / Category Tag",
+      "name": "ps_subtitle_tag",
+      "type": "text",
+      "instructions": "Short descriptor shown below the title. Leave blank to auto-use the taxonomy category name.",
+      "placeholder": "Food Ingredients · Bakery Solutions"
+    },
+    {
+      "key": "field_ps_price",
+      "label": "Price",
+      "name": "ps_price",
+      "type": "text",
+      "instructions": "Price without currency symbol (e.g. 1200 or On Request)",
+      "placeholder": "1,200"
+    },
+    {
+      "key": "field_ps_original_price",
+      "label": "Original Price (optional)",
+      "name": "ps_original_price",
+      "type": "text",
+      "instructions": "Shown as strikethrough if provided",
+      "placeholder": "1,500"
+    },
+    {
+      "key": "field_ps_rating",
+      "label": "Rating",
+      "name": "ps_rating",
+      "type": "number",
+      "instructions": "e.g. 4.9",
+      "min": 0,
+      "max": 5,
+      "step": "0.1",
+      "placeholder": "4.9"
+    },
+    {
+      "key": "field_ps_review_count",
+      "label": "Review Count",
+      "name": "ps_review_count",
+      "type": "number",
+      "instructions": "Number of reviews",
+      "placeholder": "124"
+    },
+    {
+      "key": "field_ps_meta_items",
+      "label": "Spec / Meta Items",
+      "name": "ps_meta_items",
+      "type": "repeater",
+      "instructions": "Optional spec items shown in the detail info panel (e.g. pack size, MOQ, shelf life)",
+      "min": 0,
+      "max": 6,
+      "layout": "table",
+      "button_label": "Add Spec",
+      "sub_fields": [
+        {
+          "key": "field_ps_meta_icon",
+          "label": "Icon",
+          "name": "ps_meta_icon",
+          "type": "text",
+          "instructions": "Font Awesome class e.g. fa-box",
+          "placeholder": "fa-box"
+        },
+        {
+          "key": "field_ps_meta_text",
+          "label": "Text",
+          "name": "ps_meta_text",
+          "type": "text",
+          "placeholder": "25kg Bags"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "product_segment"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Fields for Product Segment custom post type"
+}

@@ -1,0 +1,77 @@
+{
+  "key": "group_faq_page",
+  "title": "FAQs Page",
+  "modified": 9999999999,
+  "fields": [
+    {
+      "key": "field_faq_page_eyebrow",
+      "label": "Eyebrow Text",
+      "name": "faq_page_eyebrow",
+      "type": "text",
+      "placeholder": "Frequently Asked Questions"
+    },
+    {
+      "key": "field_faq_page_title",
+      "label": "Title",
+      "name": "faq_page_title",
+      "type": "text",
+      "placeholder": "Got a Question?"
+    },
+    {
+      "key": "field_faq_page_title_hl",
+      "label": "Title Highlight",
+      "name": "faq_page_title_hl",
+      "type": "text",
+      "placeholder": "We Have the Answer."
+    },
+    {
+      "key": "field_faq_page_description",
+      "label": "Description",
+      "name": "faq_page_description",
+      "type": "textarea",
+      "rows": 3
+    },
+    {
+      "key": "field_faq_page_items",
+      "label": "FAQ Items",
+      "name": "faq_page_items",
+      "type": "repeater",
+      "instructions": "Add each question and answer. They will be numbered automatically.",
+      "min": 1,
+      "layout": "block",
+      "button_label": "Add FAQ",
+      "sub_fields": [
+        {
+          "key": "field_faq_page_question",
+          "label": "Question",
+          "name": "faq_page_question",
+          "type": "text"
+        },
+        {
+          "key": "field_faq_page_answer",
+          "label": "Answer",
+          "name": "faq_page_answer",
+          "type": "wysiwyg",
+          "toolbar": "basic",
+          "media_upload": 0
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "templates/page-faq.php"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Fields for the FAQs page template"
+}
