@@ -87,8 +87,15 @@
                 <li class="header2-menu-item">
                   <a href="/products">Our Brand Products</a>
                 </li>
-                <li class="header2-menu-item">
-                  <a href="/product-segments">Product Segments</a>
+                <li class="header2-menu-item header2-has-dropdown">
+                  <a href="/products" aria-haspopup="true">
+                    Products &amp; Partners <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                  </a>
+                  <div class="header2-dropdown">
+                    <a href="/product-segments">Explore Our Range</a>
+                    <a href="/#">Principal Company</a>
+                    <a href="/#">Our Branded Partners</a>
+                  </div>
                 </li>
                 <!-- <li class="header2-menu-item">
                   <a href="/our-team">Our Team</a>
@@ -165,8 +172,18 @@
               <li class="header2-mobile-item">
                 <a href="/products">Our Brand Products</a>
               </li>
-              <li class="header2-mobile-item">
-                <a href="/product-segments">Product Segments</a>
+              <li class="header2-mobile-item header2-mobile-has-submenu">
+                <div class="header2-mobile-link-wrap">
+                  <a href="/products">Products &amp; Partners</a>
+                  <button class="header2-mobile-submenu-toggle" type="button" aria-label="Toggle Products and Partners menu">
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <ul class="header2-mobile-submenu">
+                  <li><a href="/products">Explore Our Range</a></li>
+                  <li><a href="/product-segments">Principal Company</a></li>
+                  <li><a href="/partner-with-us">Our Branded Partners</a></li>
+                </ul>
               </li>
               <!-- <li class="header2-mobile-item">
                 <a href="/our-team">Our Team</a>

@@ -11078,7 +11078,7 @@ Category Section
 
 .pc-available {
     color: var(--dark-color);
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.4px;
     line-height: 1.5;
@@ -11090,19 +11090,28 @@ Category Section
     align-items: center;
     margin-right: 8px;
     color: var(--primary-color);
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 800;
     letter-spacing: 1.8px;
 }
 
 .pc-available span i {
     margin-right: 5px;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .pc-know-more {
     align-self: flex-start;
-    margin-top: 16px;
+    margin-top: 14px;
+    padding: 12px 42px 12px 18px;
+    font-size: 14px;
+}
+
+.pc-know-more::before {
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    background-size: 8px auto;
 }
 
 /* Product editor: image and rich-content feature section. */
@@ -17508,12 +17517,10 @@ Category Section
     left: 0;
     min-width: 250px;
     padding: 14px;
-    border-radius: 22px;
-    background: rgba(18, 18, 18, 0.94);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.28);
+    border-radius: 8px;
+    background: #eaf6dd;
+    border: 1px solid rgba(141, 198, 63, 0.45);
+    box-shadow: 0 20px 42px rgba(46, 46, 46, 0.18);
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
@@ -17523,18 +17530,19 @@ Category Section
 
 .header2-dropdown a {
     display: block;
-    color: rgba(255, 255, 255, 0.82);
+    font-family: var(--body-font);
+    color: var(--dark-color);
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     padding: 12px 14px;
-    border-radius: 14px;
+    border-radius: 6px;
     transition: var(--transition);
 }
 
 .header2-dropdown a:hover,
 .header2-dropdown a.active {
-    background: rgba(255, 88, 27, 0.14);
-    color: var(--primary-color);
+    background: var(--primary-color);
+    color: var(--white-color);
     transform: translateX(4px);
 }
 
@@ -17829,7 +17837,7 @@ Category Section
 .header2-mobile-submenu {
     list-style: none;
     margin: 0;
-    padding: 0 0 12px 14px;
+    padding: 0;
     max-height: 0;
     overflow: hidden;
     opacity: 0;
@@ -17839,11 +17847,16 @@ Category Section
 .header2-mobile-has-submenu.active .header2-mobile-submenu {
     max-height: 800px;
     opacity: 1;
+    margin-bottom: 8px;
+    padding: 4px 14px 12px;
+    border-radius: 8px;
+    background: #eaf6dd;
 }
 
 .header2-mobile-submenu li a {
     display: block;
-    color: rgba(255, 255, 255, 0.74);
+    font-family: var(--body-font);
+    color: var(--dark-color);
     font-size: 15px;
     font-weight: 500;
     padding: 11px 0;
@@ -17859,7 +17872,7 @@ Category Section
     left: 0;
     width: 8px;
     height: 2px;
-    background: var(--primary-color);
+    background: #d1aa38;
     transform: translateY(-50%);
     border-radius: 20px;
 }
