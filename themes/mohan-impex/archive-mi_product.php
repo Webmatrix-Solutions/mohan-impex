@@ -66,7 +66,10 @@ $total = wp_count_posts( 'mi_product' )->publish;
                     <?php
                     while ( have_posts() ) :
                         the_post();
-                        get_template_part( 'template-parts/mi-product/card', null, [ 'post_id' => get_the_ID() ] );
+                        get_template_part( 'template-parts/mi-product/card', null, [
+                            'post_id'      => get_the_ID(),
+                            'archive_card' => true,
+                        ] );
                     endwhile;
                     ?>
                 </div>

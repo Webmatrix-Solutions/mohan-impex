@@ -1,0 +1,50 @@
+{
+  "key": "group_mi_product_testing_section",
+  "title": "Product - Image & Content Section",
+  "fields": [
+    {
+      "key": "field_mip_testing_image",
+      "label": "Left Image",
+      "name": "mip_testing_image",
+      "type": "image",
+      "instructions": "Upload the image displayed on the left side of the section.",
+      "return_format": "array",
+      "preview_size": "medium",
+      "library": "all"
+    },
+    {
+      "key": "field_mip_testing_content",
+      "label": "Content",
+      "name": "mip_testing_content",
+      "type": "wysiwyg",
+      "instructions": "Use a heading, paragraphs, and a bulleted list. Bullets display as gold tick icons.",
+      "tabs": "all",
+      "toolbar": "full",
+      "media_upload": 1,
+      "delay": 0
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/product-testing-section"
+      }
+    ],
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "mi_product"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Overlapping image and rich-content section for Products."
+}

@@ -11,6 +11,7 @@
 
 $post_id   = isset( $args['post_id'] ) ? (int) $args['post_id'] : get_the_ID();
 $aos_delay = isset( $args['aos_delay'] ) ? (int) $args['aos_delay'] : 0;
+$archive_card = ! empty( $args['archive_card'] );
 
 $badge_text = get_field( 'mip_badge_text', $post_id );
 $badge_type = get_field( 'mip_badge_type', $post_id ) ?: '';
@@ -18,6 +19,7 @@ $price      = get_field( 'mip_price', $post_id );
 $orig_price = get_field( 'mip_original_price', $post_id );
 $rating     = get_field( 'mip_rating', $post_id );
 $rev_count  = get_field( 'mip_review_count', $post_id );
+$meta_items = get_field( 'mip_meta_items', $post_id ) ?: [];
 
 $terms    = get_the_terms( $post_id, 'mi_product_cat' );
 $cat_name = ( ! empty( $terms ) && ! is_wp_error( $terms ) ) ? $terms[0]->name : '';
@@ -27,6 +29,9 @@ $img_alt   = get_the_title( $post_id );
 $permalink = get_permalink( $post_id );
 $title     = get_the_title( $post_id );
 $excerpt   = wp_trim_words( get_the_excerpt() ?: wp_strip_all_tags( get_post_field( 'post_content', $post_id ) ), 18, '...' );
+$pack_sizes = array_filter( array_map( static function( $item ) {
+    return $item['mip_meta_text'] ?? '';
+}, $meta_items ) );
 ?>
 
 <div class="pc" data-aos="fade-up" data-aos-duration="700" data-aos-delay="<?php echo esc_attr( $aos_delay ); ?>"
@@ -40,15 +45,15 @@ $excerpt   = wp_trim_words( get_the_excerpt() ?: wp_strip_all_tags( get_post_fie
             <?php else : ?>
                 <div style="width:100%;aspect-ratio:4/3;background:#e8e8e8;"></div>
             <?php endif; ?>
-            <div class="pc-img-overlay"></div>
-            <?php if ( $badge_text ) : ?>
+            <?php if ( ! $archive_card ) : ?><div class="pc-img-overlay"></div><?php endif; ?>
+            <?php if ( ! $archive_card && $badge_text ) : ?>
                 <div class="pc-badges">
                     <span class="pc-badge <?php echo esc_attr( $badge_type ); ?>">
                         <?php echo esc_html( $badge_text ); ?>
                     </span>
                 </div>
             <?php endif; ?>
-            <?php if ( $rating ) : ?>
+            <?php if ( ! $archive_card && $rating ) : ?>
                 <div class="pc-rating-img">
                     <i class="fa-solid fa-star"></i> <?php echo esc_html( $rating ); ?>
                     <?php if ( $rev_count ) : ?><span>(<?php echo esc_html( $rev_count ); ?>)</span><?php endif; ?>
@@ -58,22 +63,32 @@ $excerpt   = wp_trim_words( get_the_excerpt() ?: wp_strip_all_tags( get_post_fie
     </a>
 
     <div class="pc-body">
-        <?php if ( $cat_name ) : ?>
-            <div class="pc-cat"><?php echo esc_html( $cat_name ); ?></div>
-        <?php endif; ?>
-        <div class="pc-name"><a href="<?php echo esc_url( $permalink ); ?>"><?php echo esc_html( $title ); ?></a></div>
-        <?php if ( $excerpt ) : ?>
-            <p class="pc-desc"><?php echo esc_html( $excerpt ); ?></p>
-        <?php endif; ?>
-        <div class="pc-divider"></div>
-        <div class="pc-footer">
-            <?php if ( $price ) : ?>
-                <div class="pc-price">
-                    <?php if ( $orig_price ) : ?><s>₹<?php echo esc_html( $orig_price ); ?></s><?php endif; ?>
-                    <sup>₹</sup><?php echo esc_html( $price ); ?>
+        <?php if ( $archive_card ) : ?>
+            <?php if ( $pack_sizes ) : ?>
+                <div class="pc-available">
+                    <span><i class="fa-solid fa-box-open" aria-hidden="true"></i> Available in</span>
+                    <?php echo esc_html( implode( ' / ', $pack_sizes ) ); ?>
                 </div>
             <?php endif; ?>
-            <a href="<?php echo esc_url( $permalink ); ?>" class="btn-default">Learn More</a>
-        </div>
+            <a href="<?php echo esc_url( $permalink ); ?>" class="btn-default pc-know-more">Know More</a>
+        <?php else : ?>
+            <?php if ( $cat_name ) : ?>
+                <div class="pc-cat"><?php echo esc_html( $cat_name ); ?></div>
+            <?php endif; ?>
+            <div class="pc-name"><a href="<?php echo esc_url( $permalink ); ?>"><?php echo esc_html( $title ); ?></a></div>
+            <?php if ( $excerpt ) : ?>
+                <p class="pc-desc"><?php echo esc_html( $excerpt ); ?></p>
+            <?php endif; ?>
+            <div class="pc-divider"></div>
+            <div class="pc-footer">
+                <?php if ( $price ) : ?>
+                    <div class="pc-price">
+                        <?php if ( $orig_price ) : ?><s>₹<?php echo esc_html( $orig_price ); ?></s><?php endif; ?>
+                        <sup>₹</sup><?php echo esc_html( $price ); ?>
+                    </div>
+                <?php endif; ?>
+                <a href="<?php echo esc_url( $permalink ); ?>" class="btn-default">Learn More</a>
+            </div>
+        <?php endif; ?>
     </div>
 </div>

@@ -195,6 +195,36 @@ add_action( 'acf/init', function() {
             'icon'            => 'grid-view',
             'keywords'        => [ 'gallery', 'mosaic', 'images', 'lightbox' ],
         ],
+        [
+            'name'            => 'product-testing-section',
+            'title'           => 'Product — Image & Content',
+            'description'     => 'Overlapping product image and rich-content section.',
+            'render_template' => 'template-parts/mi-product/testing-section.php',
+            'category'        => 'mohan-impex',
+            'icon'            => 'media-document',
+            'keywords'        => [ 'product', 'testing', 'image', 'content' ],
+            'post_types'      => [ 'mi_product' ],
+        ],
+        [
+            'name'            => 'product-applications',
+            'title'           => 'Product — Applications',
+            'description'     => 'Application icon grid for a product.',
+            'render_template' => 'template-parts/mi-product/applications.php',
+            'category'        => 'mohan-impex',
+            'icon'            => 'screenoptions',
+            'keywords'        => [ 'product', 'applications', 'uses', 'icons' ],
+            'post_types'      => [ 'mi_product' ],
+        ],
+        [
+            'name'            => 'product-benefits',
+            'title'           => 'Product — Benefits',
+            'description'     => 'Product benefits list with icons.',
+            'render_template' => 'template-parts/mi-product/benefits.php',
+            'category'        => 'mohan-impex',
+            'icon'            => 'yes-alt',
+            'keywords'        => [ 'product', 'benefits', 'features', 'icons' ],
+            'post_types'      => [ 'mi_product' ],
+        ],
     ];
 
     foreach ( $blocks as $block ) {
