@@ -15,7 +15,7 @@ get_header();
         <div class="container position-relative">
             <div class="page-banner__content">
                 <div class="eyebrow" data-aos="fade-up" data-aos-duration="600">
-                    <span class="eyebrow-line"></span> 404 Error Page
+                    <span class="eyebrow-line"></span> 404 Error Pagess
                 </div>
                 <h2 class="section-heading" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
                     Looks Like You've <span class="hero-highlight">Taken a Wrong Turn</span>
