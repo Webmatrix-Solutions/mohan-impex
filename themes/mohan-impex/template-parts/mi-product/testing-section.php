@@ -7,6 +7,7 @@
 
 $image = get_field( 'mip_testing_image' );
 $content = get_field( 'mip_testing_content' );
+$product_title = get_the_title();
 
 if ( is_array( $image ) ) {
     $image_url = $image['url'] ?? '';
@@ -31,7 +32,8 @@ if ( is_array( $image ) ) {
                 <?php endif; ?>
             </div>
             <div class="product-testing-section__content">
-                <?php echo $content ? wp_kses_post( $content ) : '<h2>Product Excellence</h2><p>Add the image and content for this section from the block settings.</p>'; ?>
+                <h2 class="product-testing-section__title">What is <span><?php echo esc_html( $product_title ); ?></span>?</h2>
+                <?php echo $content ? wp_kses_post( $content ) : '<p>Add the image and content for this section from the block settings.</p>'; ?>
             </div>
         </div>
     </div>

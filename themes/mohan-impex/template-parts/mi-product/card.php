@@ -64,6 +64,7 @@ $pack_sizes = array_filter( array_map( static function( $item ) {
 
     <div class="pc-body">
         <?php if ( $archive_card ) : ?>
+            <div class="pc-name"><a href="<?php echo esc_url( $permalink ); ?>"><?php echo esc_html( $title ); ?></a></div>
             <?php if ( $pack_sizes ) : ?>
                 <div class="pc-available">
                     <span><i class="fa-solid fa-box-open" aria-hidden="true"></i> Available in</span>
