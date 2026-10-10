@@ -198,7 +198,7 @@ add_action( 'acf/init', function() {
         [
             'name'            => 'product-testing-section',
             'title'           => 'Product — Image & Content',
-            'description'     => 'Overlapping product image and rich-content section.',
+            'description'     => 'Story-style product image and content section.',
             'render_template' => 'template-parts/mi-product/testing-section.php',
             'category'        => 'mohan-impex',
             'icon'            => 'media-document',

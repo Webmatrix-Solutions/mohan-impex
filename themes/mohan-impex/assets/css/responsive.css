@@ -37,15 +37,11 @@
 
 @media only screen and (max-width:1199px) {
     .product-testing-section__inner {
-        min-height: 420px;
+        gap: 48px;
     }
 
     .product-testing-section__image {
         height: 420px;
-    }
-
-    .product-testing-section__content {
-        padding: 32px;
     }
 
     .hs {
@@ -4845,7 +4841,7 @@
     .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 
     .related-products-section .pc-img-wrap {
-        height: 220px;
+        height: 280px;
     }
 
     .product-benefits {
@@ -4922,11 +4918,12 @@
     }
 
     .product-testing-section {
-        padding: 32px 0;
+        padding: 64px 0;
     }
 
     .product-testing-section__inner {
-        min-height: 0;
+        grid-template-columns: 1fr;
+        gap: 34px;
     }
 
     .product-testing-section__image {
@@ -4935,18 +4932,15 @@
     }
 
     .product-testing-section__content {
-        position: static;
         width: 100%;
-        padding: 30px 24px;
-        transform: none;
     }
 
     .product-testing-section__content h1,
     .product-testing-section__content h2,
     .product-testing-section__content h3,
     .product-testing-section__content h4 {
-        margin-bottom: 24px;
-        font-size: 21px;
+        margin-bottom: 18px;
+        font-size: 30px;
     }
 }
 

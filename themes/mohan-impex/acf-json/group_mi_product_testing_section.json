@@ -1,13 +1,13 @@
 {
   "key": "group_mi_product_testing_section",
-  "title": "Product - Image & Content Section",
+  "title": "Product - Story Section",
   "fields": [
     {
       "key": "field_mip_testing_image",
       "label": "Left Image",
       "name": "mip_testing_image",
       "type": "image",
-      "instructions": "Upload the image displayed on the left side of the section.",
+      "instructions": "Upload the image displayed on the left side of this story-style section.",
       "return_format": "array",
       "preview_size": "medium",
       "library": "all"
@@ -17,7 +17,7 @@
       "label": "Content",
       "name": "mip_testing_content",
       "type": "wysiwyg",
-      "instructions": "Use a heading, paragraphs, and a bulleted list. Bullets display as gold tick icons.",
+      "instructions": "Add the supporting text for the right side. Headings, paragraphs and bulleted lists are supported.",
       "tabs": "all",
       "toolbar": "full",
       "media_upload": 1,
@@ -46,5 +46,5 @@
   "label_placement": "top",
   "instruction_placement": "label",
   "active": true,
-  "description": "Overlapping image and rich-content section for Products."
+  "description": "Story-style image and content section for Products."
 }

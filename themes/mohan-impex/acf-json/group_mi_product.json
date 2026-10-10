@@ -15,6 +15,16 @@
       "max": 8
     },
     {
+      "key": "field_mip_hero_image",
+      "label": "Hero Banner Image",
+      "name": "mip_hero_image",
+      "type": "image",
+      "instructions": "Optional. Used only as the background image in this product's detail-page hero. Leave empty to use the default product banner.",
+      "return_format": "array",
+      "preview_size": "medium",
+      "library": "all"
+    },
+    {
       "key": "field_mip_badge_text",
       "label": "Badge Text",
       "name": "mip_badge_text",

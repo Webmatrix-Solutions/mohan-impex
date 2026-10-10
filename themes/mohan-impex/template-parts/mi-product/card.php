@@ -12,6 +12,7 @@
 $post_id   = isset( $args['post_id'] ) ? (int) $args['post_id'] : get_the_ID();
 $aos_delay = isset( $args['aos_delay'] ) ? (int) $args['aos_delay'] : 0;
 $archive_card = ! empty( $args['archive_card'] );
+$related_card = ! empty( $args['related_card'] );
 
 $badge_text = get_field( 'mip_badge_text', $post_id );
 $badge_type = get_field( 'mip_badge_type', $post_id ) ?: '';
@@ -45,15 +46,15 @@ $pack_sizes = array_filter( array_map( static function( $item ) {
             <?php else : ?>
                 <div style="width:100%;aspect-ratio:4/3;background:#e8e8e8;"></div>
             <?php endif; ?>
-            <?php if ( ! $archive_card ) : ?><div class="pc-img-overlay"></div><?php endif; ?>
-            <?php if ( ! $archive_card && $badge_text ) : ?>
+            <?php if ( ! $archive_card && ! $related_card ) : ?><div class="pc-img-overlay"></div><?php endif; ?>
+            <?php if ( ! $archive_card && ! $related_card && $badge_text ) : ?>
                 <div class="pc-badges">
                     <span class="pc-badge <?php echo esc_attr( $badge_type ); ?>">
                         <?php echo esc_html( $badge_text ); ?>
                     </span>
                 </div>
             <?php endif; ?>
-            <?php if ( ! $archive_card && $rating ) : ?>
+            <?php if ( ! $archive_card && ! $related_card && $rating ) : ?>
                 <div class="pc-rating-img">
                     <i class="fa-solid fa-star"></i> <?php echo esc_html( $rating ); ?>
                     <?php if ( $rev_count ) : ?><span>(<?php echo esc_html( $rev_count ); ?>)</span><?php endif; ?>
@@ -63,15 +64,17 @@ $pack_sizes = array_filter( array_map( static function( $item ) {
     </a>
 
     <div class="pc-body">
-        <?php if ( $archive_card ) : ?>
+        <?php if ( $archive_card || $related_card ) : ?>
             <div class="pc-name"><a href="<?php echo esc_url( $permalink ); ?>"><?php echo esc_html( $title ); ?></a></div>
             <?php if ( $pack_sizes ) : ?>
                 <div class="pc-available">
-                    <span><i class="fa-solid fa-box-open" aria-hidden="true"></i> Available in</span>
+                    <span><i class="fa-solid fa-box-open" aria-hidden="true"></i>Available in</span>
                     <?php echo esc_html( implode( ' / ', $pack_sizes ) ); ?>
                 </div>
             <?php endif; ?>
-            <a href="<?php echo esc_url( $permalink ); ?>" class="btn-default pc-know-more">Know More</a>
+            <?php if ( $archive_card ) : ?>
+                <a href="<?php echo esc_url( $permalink ); ?>" class="btn-default pc-know-more">Know More</a>
+            <?php endif; ?>
         <?php else : ?>
             <?php if ( $cat_name ) : ?>
                 <div class="pc-cat"><?php echo esc_html( $cat_name ); ?></div>
