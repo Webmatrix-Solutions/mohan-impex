@@ -11280,14 +11280,14 @@ Category Section
     padding: 24px 18px;
     border: 1px solid rgba(46, 46, 46, 0.08);
     border-radius: 8px;
-    background: #f2f8e9;
+    background: #dbf6b3;
     text-align: center;
     transition: var(--transition);
 }
 
 .product-applications__item:nth-child(even) {
     border-color: var(--dark-color);
-    background: var(--dark-color);
+    background: #6f6f6f;
 }
 
 .product-applications__item:nth-child(even) .product-applications__label {
