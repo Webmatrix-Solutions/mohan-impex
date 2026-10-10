@@ -11285,9 +11285,14 @@ Category Section
     transition: var(--transition);
 }
 
-.product-applications__item:nth-child(4n + 2) { background: #fff3d6; }
-.product-applications__item:nth-child(4n + 3) { background: #eaf5f6; }
-.product-applications__item:nth-child(4n) { background: #f8eaf0; }
+.product-applications__item:nth-child(even) {
+    border-color: var(--dark-color);
+    background: var(--dark-color);
+}
+
+.product-applications__item:nth-child(even) .product-applications__label {
+    color: var(--white-color);
+}
 
 .product-applications__grid--count-1 .product-applications__item,
 .product-applications__grid--count-2 .product-applications__item,
