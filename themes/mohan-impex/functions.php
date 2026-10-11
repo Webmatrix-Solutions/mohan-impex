@@ -328,6 +328,11 @@ function mohan_impex_scripts() {
         true
     );
 
+    wp_localize_script( 'mohan-impex-main', 'mohanImpexData', [
+        'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+        'nonce'   => wp_create_nonce( 'mohan_impex_load_logos' ),
+    ] );
+
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
         wp_enqueue_script( 'comment-reply' );
     }
@@ -502,6 +507,50 @@ function mohan_impex_register_post_types() {
         'taxonomies'         => [ 'mi_product_cat' ],
         'show_in_rest'       => true,
     ] );
+
+    // Logo-only listing: Our Branded Partners.
+    register_post_type( 'branded_partner', [
+        'labels' => [
+            'name'               => 'Our Branded Partners',
+            'singular_name'      => 'Branded Partner',
+            'add_new_item'       => 'Add New Branded Partner',
+            'edit_item'          => 'Edit Branded Partner',
+            'search_items'       => 'Search Branded Partners',
+            'not_found'          => 'No branded partners found',
+            'not_found_in_trash' => 'No branded partners found in Trash',
+            'menu_name'          => 'Branded Partners',
+        ],
+        'public'             => true,
+        'publicly_queryable' => true,
+        'has_archive'        => 'branded-partners',
+        'rewrite'            => [ 'slug' => 'branded-partners', 'with_front' => false ],
+        'menu_icon'          => 'dashicons-groups',
+        'menu_position'      => 7,
+        'supports'           => [ 'title', 'thumbnail' ],
+        'show_in_rest'       => true,
+    ] );
+
+    // Logo-only listing: Principal Companies.
+    register_post_type( 'principal_company', [
+        'labels' => [
+            'name'               => 'Principal Companies',
+            'singular_name'      => 'Principal Company',
+            'add_new_item'       => 'Add New Principal Company',
+            'edit_item'          => 'Edit Principal Company',
+            'search_items'       => 'Search Principal Companies',
+            'not_found'          => 'No principal companies found',
+            'not_found_in_trash' => 'No principal companies found in Trash',
+            'menu_name'          => 'Principal Companies',
+        ],
+        'public'             => true,
+        'publicly_queryable' => true,
+        'has_archive'        => 'principal-companies',
+        'rewrite'            => [ 'slug' => 'principal-companies', 'with_front' => false ],
+        'menu_icon'          => 'dashicons-building',
+        'menu_position'      => 8,
+        'supports'           => [ 'title', 'thumbnail' ],
+        'show_in_rest'       => true,
+    ] );
 }
 add_action( 'init', 'mohan_impex_register_post_types' );
 
@@ -511,6 +560,82 @@ add_action( 'pre_get_posts', function( $query ) {
         $query->set( 'posts_per_page', 12 );
         $query->set( 'orderby', 'title' );
         $query->set( 'order', 'ASC' );
+    }
+} );
+
+// Ten company logos per archive page, ordered by business name.
+add_action( 'pre_get_posts', function( $query ) {
+    if ( ! is_admin() && $query->is_main_query() && $query->is_post_type_archive( [ 'branded_partner', 'principal_company' ] ) ) {
+        $query->set( 'posts_per_page', 10 );
+        $query->set( 'orderby', 'title' );
+        $query->set( 'order', 'ASC' );
+    }
+} );
+
+/** Render a logo card used on company archive pages and Load More responses. */
+function mohan_impex_render_company_logo_card( $post_id ) {
+    $name     = get_the_title( $post_id );
+    $logo_url = get_the_post_thumbnail_url( $post_id, 'large' );
+    ?>
+    <article class="pc company-logo-card">
+        <div class="pc-bar"></div>
+        <div class="pc-img-wrap company-logo-card__image">
+            <?php if ( $logo_url ) : ?>
+                <img src="<?php echo esc_url( $logo_url ); ?>" alt="<?php echo esc_attr( $name ); ?> logo" loading="lazy">
+            <?php else : ?>
+                <span class="company-logo-card__placeholder" aria-hidden="true"><?php echo esc_html( strtoupper( substr( $name, 0, 1 ) ) ); ?></span>
+            <?php endif; ?>
+        </div>
+        <div class="pc-body">
+            <div class="pc-name company-logo-card__name"><?php echo esc_html( $name ); ?></div>
+        </div>
+    </article>
+    <?php
+}
+
+/** Fetch the next page of company logos for the archive Load More control. */
+function mohan_impex_load_company_logos() {
+    check_ajax_referer( 'mohan_impex_load_logos', 'nonce' );
+
+    $post_type = sanitize_key( $_POST['post_type'] ?? '' );
+    $page      = max( 1, absint( $_POST['page'] ?? 1 ) );
+    $allowed   = [ 'branded_partner', 'principal_company' ];
+
+    if ( ! in_array( $post_type, $allowed, true ) ) {
+        wp_send_json_error( [ 'message' => 'Invalid company listing.' ], 400 );
+    }
+
+    $query = new WP_Query( [
+        'post_type'      => $post_type,
+        'post_status'    => 'publish',
+        'posts_per_page' => 10,
+        'paged'          => $page,
+        'orderby'        => 'title',
+        'order'          => 'ASC',
+    ] );
+
+    ob_start();
+    while ( $query->have_posts() ) {
+        $query->the_post();
+        mohan_impex_render_company_logo_card( get_the_ID() );
+    }
+    wp_reset_postdata();
+
+    wp_send_json_success( [
+        'html'     => ob_get_clean(),
+        'has_more' => $page < (int) $query->max_num_pages,
+        'next_url' => add_query_arg( 'paged', $page + 1, get_post_type_archive_link( $post_type ) ),
+    ] );
+}
+add_action( 'wp_ajax_mohan_impex_load_company_logos', 'mohan_impex_load_company_logos' );
+add_action( 'wp_ajax_nopriv_mohan_impex_load_company_logos', 'mohan_impex_load_company_logos' );
+
+// These content types are archive-only. Direct item URLs return visitors to
+// their respective logo listing rather than exposing a detail page.
+add_action( 'template_redirect', function() {
+    if ( is_singular( [ 'branded_partner', 'principal_company' ] ) ) {
+        wp_safe_redirect( get_post_type_archive_link( get_post_type() ), 302 );
+        exit;
     }
 } );
 

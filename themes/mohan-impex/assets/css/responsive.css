@@ -36,6 +36,10 @@
 }
 
 @media only screen and (max-width:1199px) {
+    .company-logo-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
     .product-testing-section__inner {
         gap: 48px;
     }
@@ -4838,6 +4842,27 @@
 }
 
 @media (max-width: 767px) {
+    .company-archive__hero {
+        height: 340px;
+    }
+
+    .company-archive__listing {
+        padding: 64px 0 76px;
+    }
+
+    .company-logo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .company-logo-card .company-logo-card__image {
+        height: 130px;
+    }
+
+    .company-logo-card__name {
+        font-size: 14px;
+    }
+
     .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 
     .related-products-section .pc-img-wrap {

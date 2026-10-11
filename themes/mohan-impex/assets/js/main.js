@@ -881,3 +881,49 @@ class GalleryCarousel {
 document.addEventListener('DOMContentLoaded', () => {
     new GalleryCarousel();
 });
+
+// Company logo archive: load the next ten cards without leaving the page.
+document.addEventListener('DOMContentLoaded', function () {
+    var loadMore = document.querySelector('[data-company-load-more]');
+    var grid = document.querySelector('[data-company-logo-grid]');
+    if (!loadMore || !grid || !window.mohanImpexData) return;
+
+    loadMore.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (loadMore.dataset.loading === 'true') return;
+
+        loadMore.dataset.loading = 'true';
+        loadMore.textContent = 'Loading...';
+
+        var data = new FormData();
+        data.append('action', 'mohan_impex_load_company_logos');
+        data.append('nonce', window.mohanImpexData.nonce);
+        data.append('post_type', loadMore.dataset.postType);
+        data.append('page', loadMore.dataset.nextPage);
+
+        fetch(window.mohanImpexData.ajaxUrl, {
+            method: 'POST',
+            body: data,
+            credentials: 'same-origin'
+        })
+            .then(function (response) { return response.json(); })
+            .then(function (response) {
+                if (!response.success) throw new Error('Could not load company logos.');
+                grid.insertAdjacentHTML('beforeend', response.data.html);
+
+                if (response.data.has_more) {
+                    var nextPage = Number(loadMore.dataset.nextPage) + 1;
+                    loadMore.dataset.nextPage = String(nextPage);
+                    loadMore.href = response.data.next_url;
+                    loadMore.textContent = 'Load More';
+                    loadMore.dataset.loading = 'false';
+                } else {
+                    loadMore.parentNode.remove();
+                }
+            })
+            .catch(function () {
+                loadMore.textContent = 'Try Again';
+                loadMore.dataset.loading = 'false';
+            });
+    });
+});

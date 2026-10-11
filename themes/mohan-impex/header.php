@@ -93,8 +93,8 @@
                   </a>
                   <div class="header2-dropdown">
                     <a href="/product-segments">Explore Our Range</a>
-                    <a href="/#">Principal Company</a>
-                    <a href="/#">Our Branded Partners</a>
+                    <a href="/principal-companies">Principal Companies</a>
+                    <a href="/branded-partners">Our Branded Partners</a>
                   </div>
                 </li>
                 <!-- <li class="header2-menu-item">
