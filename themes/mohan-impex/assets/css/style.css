@@ -17517,6 +17517,12 @@ Category Section
     background: transparent;
 }
 
+.header2-wrap:not(.scrolled),
+.header2-wrap:not(.scrolled) .container,
+.header2-wrap:not(.scrolled) .header2-navbar {
+    background-color: transparent !important;
+}
+
 .header2-wrap.scrolled {
     padding: 12px 0;
     background: rgba(10, 10, 10, 0.72);
