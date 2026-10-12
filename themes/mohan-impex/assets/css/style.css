@@ -278,7 +278,7 @@ section {
 }
 
 .btn-outline-primary {
-    background: transparent;
+    background: var(--dark-color);
     border-color: var(--primary-color);
     color: var(--primary-color);
 }
@@ -17514,7 +17514,7 @@ Category Section
     z-index: 9999;
     padding: 20px 0;
     transition: all 0.35s ease;
-    background: transparent;
+    background: var(--dark-color);
 }
 
 .header2-wrap.scrolled {
