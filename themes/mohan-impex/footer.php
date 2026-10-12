@@ -219,7 +219,6 @@
     <script src="<?php echo get_template_directory_uri(); ?>/assets/js/aos.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/assets/js/gsap.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/assets/js/fancybox.umd.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/assets/js/main.js"></script>
     <?php wp_footer(); ?>
   </body>
 </html>

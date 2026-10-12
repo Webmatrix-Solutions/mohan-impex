@@ -302,6 +302,8 @@ add_action( 'after_setup_theme', 'mohan_impex_content_width', 0 );
 // -----------------------------------------------
 function mohan_impex_scripts() {
     $version = wp_get_theme()->get( 'Version' );
+    $main_js = get_template_directory() . '/assets/js/main.js';
+    $main_js_version = file_exists( $main_js ) ? (string) filemtime( $main_js ) : $version;
 
     // Main stylesheet
     wp_enqueue_style(
@@ -324,7 +326,7 @@ function mohan_impex_scripts() {
         'mohan-impex-main',
         get_template_directory_uri() . '/assets/js/main.js',
         [],
-        $version,
+        $main_js_version,
         true
     );
 

@@ -46,12 +46,18 @@ jobs:
             ./plugins/ \
             ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:${{ secrets.REMOTE_PATH }}/wp-content/plugins/
 
-      - name: Clear WordPress Cache
+      - name: Purge WordPress and LiteSpeed caches
         run: |
           ssh -i ~/.ssh/deploy_key \
             -p ${{ secrets.SSH_PORT }} \
             ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} \
-            "cd ${{ secrets.REMOTE_PATH }} && wp cache flush --allow-root 2>/dev/null || true"
+            "set -e; \
+            cd ${{ secrets.REMOTE_PATH }}; \
+            command -v wp >/dev/null; \
+            wp cache flush --allow-root; \
+            if wp plugin is-active litespeed-cache --allow-root >/dev/null 2>&1; then \
+              wp litespeed-purge all --allow-root; \
+            fi"
 
       - name: Deployment Complete
         run: echo "✅ Deployed to lavenderblush-mouse-811581.hostingersite.com"

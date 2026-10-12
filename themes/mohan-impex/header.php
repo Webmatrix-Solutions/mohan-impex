@@ -4,6 +4,12 @@
  *
  * @package mohan-impex
  */
+$theme_uri = get_template_directory_uri();
+$theme_dir = get_template_directory();
+$asset_version = static function( $path ) use ( $theme_dir ) {
+    $file = $theme_dir . $path;
+    return file_exists( $file ) ? (string) filemtime( $file ) : wp_get_theme()->get( 'Version' );
+};
 ?><!doctype html>
 <html lang="en">
   <head>
@@ -17,17 +23,18 @@
     <meta name="keywords" content="" />
     <title>Mohan Impex Solutions Limited</title>
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri(); ?>/assets/images/mohan-impex/favicon.avif" />
+    <link rel="icon" type="image/png" href="<?php echo esc_url( $theme_uri . '/assets/images/mohan-impex/favicon.avif' ); ?>?ver=<?php echo esc_attr( $asset_version( '/assets/images/mohan-impex/favicon.avif' ) ); ?>" />
     <!-- CSS -->
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/aos.css" />
+    <link rel="stylesheet" href="<?php echo esc_url( $theme_uri . '/assets/css/bootstrap.min.css' ); ?>?ver=<?php echo esc_attr( $asset_version( '/assets/css/bootstrap.min.css' ) ); ?>" />
+    <link rel="stylesheet" href="<?php echo esc_url( $theme_uri . '/assets/css/aos.css' ); ?>?ver=<?php echo esc_attr( $asset_version( '/assets/css/aos.css' ) ); ?>" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/fancybox.css" />
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/style.css" />
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/responsive.css" />
+    <link rel="stylesheet" href="<?php echo esc_url( $theme_uri . '/assets/css/fancybox.css' ); ?>?ver=<?php echo esc_attr( $asset_version( '/assets/css/fancybox.css' ) ); ?>" />
+    <link rel="stylesheet" href="<?php echo esc_url( $theme_uri . '/assets/css/style.css' ); ?>?ver=<?php echo esc_attr( $asset_version( '/assets/css/style.css' ) ); ?>" />
+    <link rel="stylesheet" href="<?php echo esc_url( $theme_uri . '/assets/css/responsive.css' ); ?>?ver=<?php echo esc_attr( $asset_version( '/assets/css/responsive.css' ) ); ?>" />
+    <?php wp_head(); ?>
   </head>
 
   <body>
