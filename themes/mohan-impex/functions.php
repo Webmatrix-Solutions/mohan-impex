@@ -305,14 +305,6 @@ function mohan_impex_scripts() {
     $main_js = get_template_directory() . '/assets/js/main.js';
     $main_js_version = file_exists( $main_js ) ? (string) filemtime( $main_js ) : $version;
 
-    // Main stylesheet
-    wp_enqueue_style(
-        'mohan-impex-style',
-        get_stylesheet_uri(),
-        [],
-        $version
-    );
-
     // Google Fonts
     wp_enqueue_style(
         'mohan-impex-google-fonts',
