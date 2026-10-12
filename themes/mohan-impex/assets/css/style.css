@@ -17514,7 +17514,7 @@ Category Section
     z-index: 9999;
     padding: 20px 0;
     transition: all 0.35s ease;
-    background: var(--dark-color);
+    background: transparent;
 }
 
 .header2-wrap.scrolled {
