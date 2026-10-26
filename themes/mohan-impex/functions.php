@@ -621,8 +621,11 @@ function mohan_impex_load_company_logos() {
         'next_url' => add_query_arg( 'paged', $page + 1, get_post_type_archive_link( $post_type ) ),
     ] );
 }
-add_action( 'wp_ajax_mohan_impex_load_company_logos', 'mohan_impex_load_company_logos' );
-add_action( 'wp_ajax_nopriv_mohan_impex_load_company_logos', 'mohan_impex_load_company_logos' );
+
+// ===============================================
+// Segment Functionalities CSV Importer
+// ===============================================
+
 
 // These content types are archive-only. Direct item URLs return visitors to
 // their respective logo listing rather than exposing a detail page.
@@ -654,3 +657,222 @@ function mohan_impex_site_logo() {
         echo '</a>';
     }
 }
+
+// ===============================================
+// Add Segment Importer to Tools Menu (Fallback)
+// ===============================================
+add_action( 'admin_menu', function() {
+    if ( current_user_can( 'manage_options' ) ) {
+        add_management_page(
+            'Segment Functionalities Importer',
+            'Segment Importer',
+            'manage_options',
+            'mohan-segment-importer',
+            'mohan_segment_importer_page'
+        );
+    }
+}, 5 );
+
+// Ensure the page is accessible
+add_action( 'admin_init', function() {
+    if ( ! empty( $_GET['page'] ) && 'mohan-segment-importer' === $_GET['page'] ) {
+        // Page is already being displayed by add_management_page
+    }
+    
+    // Also handle the import.php dispatch method if needed
+    if ( ! empty( $_GET['import'] ) && 'segment_importer' === $_GET['import'] ) {
+        if ( ! current_user_can( 'manage_options' ) ) {
+            wp_die( 'Unauthorized' );
+        }
+        mohan_segment_importer_page();
+        exit;
+    }
+}, 5 );
+
+
+// ===============================================
+// Segment Importer Functions
+// ===============================================
+
+function mohan_segment_importer_page() {
+    if ( ! current_user_can( 'manage_options' ) ) {
+        wp_die( 'Unauthorized' );
+    }
+    
+    // Check if ACF is available
+    if ( ! function_exists( 'get_field' ) ) {
+        echo '<div class="wrap"><div class="notice notice-error"><p>❌ ACF (Advanced Custom Fields) plugin is not active. Please activate it first.</p></div></div>';
+        return;
+    }
+    
+    ?>
+    <div class="wrap">
+        <h1>📊 Segment Functionalities Importer</h1>
+        
+        <div style="max-width: 600px; margin: 20px 0; padding: 15px; background: #f5f5f5; border-radius: 5px;">
+            <h3>📋 Setup Instructions:</h3>
+            <ol style="line-height: 1.8;">
+                <li><strong>Create this folder:</strong> <code>/wp-content/uploads/segment-csv/</code></li>
+                <li><strong>Save your CSV files:</strong> <code>beverage.csv</code>, <code>biscuits.csv</code>, etc.</li>
+                <li><strong>CSV Format:</strong> Comma-separated with header row
+                    <pre style="background: white; padding: 10px; border-radius: 3px; overflow-x: auto;">Raw Material,Product Functionality / Segment
+Citric Acid,Acidulant
+Malic Acid,Acidulant</pre>
+                </li>
+                <li><strong>Click the button below to import</strong></li>
+            </ol>
+        </div>
+        
+        <?php
+        if ( isset( $_POST['run_import'] ) && check_admin_referer( 'segment_import_nonce' ) ) {
+            echo '<div class="notice notice-success" style="padding: 15px; margin: 15px 0;"><p>';
+            try {
+                $result = mohan_import_segment_csvs();
+                echo $result;
+            } catch ( Exception $e ) {
+                echo '❌ Error: ' . esc_html( $e->getMessage() );
+            }
+            echo '</p></div>';
+        }
+        ?>
+        
+        <form method="post" style="margin: 20px 0;">
+            <?php wp_nonce_field( 'segment_import_nonce' ); ?>
+            <button type="submit" name="run_import" class="button button-primary button-large" style="padding: 10px 30px; font-size: 16px;">
+                🚀 Run Import Now
+            </button>
+        </form>
+    </div>
+    <?php
+}
+
+function mohan_import_segment_csvs() {
+    $upload_dir = wp_upload_dir();
+    $csv_folder = $upload_dir['basedir'] . '/segment-csv';
+
+    if ( ! is_dir( $csv_folder ) ) {
+        wp_mkdir_p( $csv_folder );
+        return "📁 <strong>Folder created!</strong><br>Location: <code>$csv_folder</code><br><br>Please add your CSV files and click 'Run Import Now' again.";
+    }
+
+    $csv_files = glob( $csv_folder . '/*.csv' );
+    if ( empty( $csv_files ) ) {
+        return "❌ <strong>No CSV files found</strong><br>Expected location: <code>$csv_folder</code><br><br>Please add CSV files and try again.";
+    }
+
+    $imported = 0;
+    $errors = [];
+    $output = '<ul style="list-style: disc; padding-left: 20px;">';
+
+    foreach ( $csv_files as $file ) {
+        $filename = basename( $file, '.csv' );
+        $result = mohan_import_single_segment( $file, $filename );
+        
+        if ( is_wp_error( $result ) ) {
+            $errors[] = "❌ <strong>$filename:</strong> " . $result->get_error_message();
+            $output .= "<li style='color: red;'><strong>$filename:</strong> " . $result->get_error_message() . "</li>";
+        } else {
+            $imported += $result;
+            $output .= "<li style='color: green;'><strong>✅ $filename.csv:</strong> Imported {$result} functionalities</li>";
+        }
+    }
+
+    $output .= '</ul>';
+    $message = $output . "<br><strong style='font-size: 16px;'>Total: $imported functionalities imported ✅</strong>";
+    
+    return $message;
+}
+
+function mohan_import_single_segment( $file, $segment_name ) {
+    // Normalize segment name: remove underscores, trim spaces, and convert to lowercase for matching
+    $normalized_name = trim( str_replace( '_', ' ', $segment_name ) );
+    $normalized_lower = strtolower( $normalized_name );
+    
+    // Find segment by name (case-insensitive, space-flexible)
+    $segments = get_posts( [
+        'post_type'   => 'product_segment',
+        'post_status' => 'publish',
+        'numberposts' => -1,
+    ] );
+
+    $matching_segment = null;
+    foreach ( $segments as $segment ) {
+        $segment_title_lower = strtolower( trim( $segment->post_title ) );
+        
+        // Try exact match first
+        if ( $segment_title_lower === $normalized_lower ) {
+            $matching_segment = $segment;
+            break;
+        }
+        
+        // Try normalized match (remove multiple spaces)
+        $segment_title_normalized = preg_replace( '/\s+/', ' ', $segment_title_lower );
+        $search_normalized = preg_replace( '/\s+/', ' ', $normalized_lower );
+        
+        if ( $segment_title_normalized === $search_normalized ) {
+            $matching_segment = $segment;
+            break;
+        }
+    }
+
+    if ( ! $matching_segment ) {
+        // List available segments for debugging
+        $available = array_map( function( $s ) { return $s->post_title; }, $segments );
+        return new WP_Error( 'not_found', "Segment '$segment_name' not found. Available: " . implode( ', ', $available ) );
+    }
+
+    $post_id = $matching_segment->ID;
+    $handle = fopen( $file, 'r' );
+    
+    if ( ! $handle ) {
+        return new WP_Error( 'file_error', "Cannot open file: $file" );
+    }
+
+    $functionalities = [];
+    $header_skipped = false;
+
+    while ( ( $data = fgetcsv( $handle, 2000, ',' ) ) !== false ) {
+        // Skip header row on first iteration
+        if ( ! $header_skipped ) {
+            $header_skipped = true;
+            continue;
+        }
+
+        // Skip empty rows
+        if ( empty( $data[0] ) || empty( $data[1] ) ) {
+            continue;
+        }
+
+        $raw_material = trim( $data[0] );
+        $functionality = trim( $data[1] );
+
+        // Group by functionality name
+        $found = false;
+        foreach ( $functionalities as &$func ) {
+            if ( strtolower( $func['functionality_name'] ) === strtolower( $functionality ) ) {
+                $func['raw_materials'] .= "\n" . $raw_material;
+                $found = true;
+                break;
+            }
+        }
+
+        if ( ! $found ) {
+            $functionalities[] = [
+                'functionality_name' => $functionality,
+                'raw_materials'      => $raw_material,
+            ];
+        }
+    }
+
+    fclose( $handle );
+
+    if ( empty( $functionalities ) ) {
+        return new WP_Error( 'empty', "No valid data found in file" );
+    }
+
+    // Update ACF field
+    update_field( 'ps_functionalities', $functionalities, $post_id );
+
+    return count( $functionalities );
+}
+
