@@ -2393,6 +2393,11 @@
         margin-bottom: 6px;
     }
 
+    .products-grid.list-view .pc-materials {
+        font-size: 13px;
+        margin: 6px 0 8px 0;
+    }
+
     .products-grid.list-view .pc-desc {
         font-size: 12.5px;
         margin-bottom: 8px;
@@ -4611,6 +4616,11 @@
     .products-grid.list-view .pc-name {
         font-size: 18px;
         margin-bottom: 6px;
+    }
+
+    .products-grid.list-view .pc-materials {
+        font-size: 12px;
+        margin: 6px 0 8px 0;
     }
 
     .products-grid.list-view .pc-desc {

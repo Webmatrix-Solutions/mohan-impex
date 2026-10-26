@@ -108,6 +108,38 @@
           "placeholder": "25kg Bags"
         }
       ]
+    },
+    {
+      "key": "field_ps_functionalities",
+      "label": "Segment Functionalities & Raw Materials",
+      "name": "ps_functionalities",
+      "type": "repeater",
+      "instructions": "Add product functionalities (e.g. Sweetener, Acidulant) with their associated raw materials. Each functionality becomes a card on the product segment page.",
+      "min": 0,
+      "max": 20,
+      "layout": "block",
+      "button_label": "Add Functionality",
+      "sub_fields": [
+        {
+          "key": "field_ps_func_name",
+          "label": "Functionality / Segment Name",
+          "name": "functionality_name",
+          "type": "text",
+          "instructions": "e.g. Sweetener, Acidulant, Preservative",
+          "placeholder": "Sweetener",
+          "required": 1
+        },
+        {
+          "key": "field_ps_func_materials",
+          "label": "Raw Materials",
+          "name": "raw_materials",
+          "type": "textarea",
+          "instructions": "Enter raw materials, separated by line breaks. They will be displayed as bullet points or pipe-separated on the frontend.",
+          "placeholder": "Dextrose\nMaltodextrin\nMaltitol\nSucralose",
+          "rows": 6,
+          "new_lines": "br"
+        }
+      ]
     }
   ],
   "location": [

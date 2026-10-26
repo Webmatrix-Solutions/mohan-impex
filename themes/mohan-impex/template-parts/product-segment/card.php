@@ -23,6 +23,26 @@ $rev_count   = get_field( 'ps_review_count', $post_id );
 $terms      = get_the_terms( $post_id, 'product_segment_cat' );
 $cat_name   = ( ! empty( $terms ) && ! is_wp_error( $terms ) ) ? $terms[0]->name : '';
 
+// Get functionality names from functionalities
+$functionalities = get_field( 'ps_functionalities', $post_id );
+$functionality_names = [];
+$show_more = false;
+
+if ( ! empty( $functionalities ) && is_array( $functionalities ) ) {
+    $max_display = 6; // Show max 6 functionality names
+    foreach ( $functionalities as $index => $func ) {
+        $func_name = isset( $func['functionality_name'] ) ? trim( $func['functionality_name'] ) : '';
+        if ( ! empty( $func_name ) ) {
+            if ( $index < $max_display ) {
+                $functionality_names[] = $func_name;
+            } else {
+                $show_more = true;
+                break;
+            }
+        }
+    }
+}
+
 $img_url    = get_the_post_thumbnail_url( $post_id, 'large' );
 $img_alt    = get_the_title( $post_id );
 $permalink  = get_permalink( $post_id );
@@ -63,6 +83,12 @@ $excerpt    = wp_trim_words( get_the_excerpt() ?: wp_strip_all_tags( get_post_fi
             <div class="pc-cat"><?php echo esc_html( $cat_name ); ?></div>
         <?php endif; ?>
         <div class="pc-name"><a href="<?php echo esc_url( $permalink ); ?>"><?php echo esc_html( $title ); ?></a></div>
+        <?php if ( ! empty( $functionality_names ) ) : ?>
+            <div class="pc-materials">
+                <?php echo esc_html( implode( ' | ', $functionality_names ) ); ?>
+                <?php if ( $show_more ) : ?> ...<?php endif; ?>
+            </div>
+        <?php endif; ?>
         <?php if ( $excerpt ) : ?>
             <p class="pc-desc"><?php echo esc_html( $excerpt ); ?></p>
         <?php endif; ?>

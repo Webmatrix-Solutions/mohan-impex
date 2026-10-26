@@ -87,11 +87,10 @@ while ( have_posts() ) :
     </section>
 
     <!-- ── Detail Section ─────────────────────────────── -->
-    <section class="detail-section">
+    <!--<section class="detail-section">
         <div class="container">
             <div class="detail-grid">
 
-                <!-- LEFT: Gallery -->
                 <div class="detail-gallery" data-aos="fade-right" data-aos-duration="900">
                     <?php if ( ! empty( $images ) ) : ?>
                         <div class="gallery-main gallery-main--segment image-animation" id="galleryMain">
@@ -146,7 +145,6 @@ while ( have_posts() ) :
                     <div class="detail-color-bar mt-4"></div>
                 </div>
 
-                <!-- RIGHT: Info Panel -->
                 <div class="detail-panel" data-aos="fade-left" data-aos-delay="100" data-aos-duration="900">
 
                     <?php if ( $display_subtitle ) : ?>
@@ -155,7 +153,6 @@ while ( have_posts() ) :
 
                     <h1 class="detail-name"><?php the_title(); ?></h1>
 
-                    <!-- Meta row -->
                     <?php if ( $rating || ! empty( $meta_items ) ) : ?>
                         <div class="detail-meta">
                             <?php if ( $rating ) : ?>
@@ -187,12 +184,10 @@ while ( have_posts() ) :
                         </div>
                     <?php endif; ?>
 
-                    <!-- Description -->
                     <div class="detail-desc">
                         <?php the_content(); ?>
                     </div>
 
-                    <!-- Price -->
                     <?php if ( $price ) : ?>
                         <div class="detail-price-row">
                             <div>
@@ -204,7 +199,6 @@ while ( have_posts() ) :
                         </div>
                     <?php endif; ?>
 
-                    <!-- Tags -->
                     <?php
                     $tags = get_the_tags();
                     if ( $tags && ! is_wp_error( $tags ) ) : ?>
@@ -216,28 +210,13 @@ while ( have_posts() ) :
                         </div>
                     <?php endif; ?>
 
-                    <!-- Share -->
-                    <!--<div class="detail-share">-->
-                    <!--    <span class="detail-share-label">Share</span>-->
-                    <!--    <?php $share_url = urlencode( get_permalink() ); $share_title = urlencode( get_the_title() ); ?>-->
-                    <!--    <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $share_url; ?>" target="_blank" rel="noopener" title="Facebook">-->
-                    <!--        <i class="fa-brands fa-facebook-f"></i>-->
-                    <!--    </a>-->
-                    <!--    <a class="share-btn" href="https://twitter.com/intent/tweet?url=<?php echo $share_url; ?>&text=<?php echo $share_title; ?>" target="_blank" rel="noopener" title="Twitter">-->
-                    <!--        <i class="fa-brands fa-twitter"></i>-->
-                    <!--    </a>-->
-                    <!--    <a class="share-btn" href="https://wa.me/?text=<?php echo $share_title . '%20' . $share_url; ?>" target="_blank" rel="noopener" title="WhatsApp">-->
-                    <!--        <i class="fa-brands fa-whatsapp"></i>-->
-                    <!--    </a>-->
-                    <!--    <button class="share-btn js-copy-link" data-url="<?php echo esc_attr( get_permalink() ); ?>" title="Copy link">-->
-                    <!--        <i class="fa-solid fa-link"></i>-->
-                    <!--    </button>-->
-                    <!--</div>-->
-
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
+
+    <!-- ── Segment Functionalities ────────────────────── -->
+    <?php get_template_part( 'template-parts/product-segment/functionalities', null, [ 'post_id' => $post_id ] ); ?>
 
     <!-- ── Related Segments ───────────────────────────── -->
     <?php if ( $related_query->have_posts() ) : ?>

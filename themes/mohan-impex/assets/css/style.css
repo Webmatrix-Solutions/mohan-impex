@@ -11578,6 +11578,20 @@ Category Section
     transition: .3s
 }
 
+.pc-materials {
+    font-size: 14px;
+    color: #000000;
+    font-weight: 500;
+    margin: 8px 0 12px 0;
+    line-height: 1.5;
+    word-break: break-word;
+    transition: .3s;
+}
+
+.pc:hover .pc-materials {
+    color: #000000;
+}
+
 .pc:hover .pc-name {
     color: var(--primary-color);
 }
@@ -21088,4 +21102,206 @@ button[data-fancybox-close]:hover {
 .footer-ecommerce .footer-links li a i {
   font-size: 0.85rem;
   color: var(--primary-color);
+}
+
+/* ===================================
+Segment Functionalities Section
+=================================== */
+
+.segment-functionalities-section {
+  padding: 80px 0 60px;
+  background: linear-gradient(180deg, #f8faf5 0%, #ffffff 100%);
+  position: relative;
+}
+
+.segment-functionalities-section .container {
+  max-width: 1260px;
+}
+
+.segment-functionalities-section .eyebrow {
+  margin-bottom: 16px;
+}
+
+.segment-functionalities-section .section-heading {
+  margin-bottom: 48px;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--dark-color);
+}
+
+.segment-functionalities-section .section-heading .hero-highlight {
+  color: var(--primary-color);
+}
+
+/* Functionalities Grid */
+.functionalities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  row-gap: 32px;
+}
+
+/* Functionality Card */
+.functionality-card {
+  background: var(--white-color);
+  border: 1px solid #e3e3e3;
+  border-radius: 12px;
+  padding: 32px;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+}
+
+.functionality-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), #8dc63f80);
+  transition: height 0.3s ease;
+}
+
+.functionality-card:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 8px 24px rgba(141, 198, 63, 0.15);
+  transform: translateY(-6px);
+}
+
+.functionality-card:hover::before {
+  height: 6px;
+}
+
+/* Card Title */
+.functionality-card__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dark-color);
+  margin: 0 0 20px 0;
+  font-family: var(--heading-font);
+  letter-spacing: -0.5px;
+}
+
+.functionality-card:hover .functionality-card__title {
+  color: var(--primary-color);
+}
+
+/* Materials Container */
+.functionality-card__materials {
+  flex-grow: 1;
+}
+
+/* Materials List (Bullet Points) */
+.materials-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.materials-list li {
+  font-size: 14px;
+  color: #666666;
+  line-height: 1.6;
+  padding-left: 20px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.materials-list li::before {
+  content: '●';
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-size: 8px;
+  line-height: 2;
+}
+
+.functionality-card:hover .materials-list li {
+  color: #2E2E2E;
+  padding-left: 24px;
+}
+
+.no-materials {
+  font-size: 14px;
+  color: #999999;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Responsive: Tablet */
+@media (max-width: 991px) {
+  .segment-functionalities-section {
+    padding: 60px 0 45px;
+  }
+
+  .segment-functionalities-section .section-heading {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+
+  .functionalities-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    row-gap: 28px;
+  }
+
+  .functionality-card {
+    padding: 24px;
+  }
+
+  .functionality-card__title {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .materials-list li {
+    font-size: 13px;
+  }
+}
+
+/* Responsive: Mobile */
+@media (max-width: 575px) {
+  .segment-functionalities-section {
+    padding: 45px 0 30px;
+  }
+
+  .segment-functionalities-section .section-heading {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  .functionalities-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    row-gap: 20px;
+  }
+
+  .functionality-card {
+    padding: 20px;
+  }
+
+  .functionality-card__title {
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+
+  .functionality-card::before {
+    height: 3px;
+  }
+
+  .functionality-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .materials-list li {
+    font-size: 13px;
+  }
 }
