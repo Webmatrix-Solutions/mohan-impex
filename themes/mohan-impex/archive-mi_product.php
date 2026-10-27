@@ -62,7 +62,7 @@ $total = wp_count_posts( 'mi_product' )->publish;
             <?php endif; ?>
 
             <?php if ( have_posts() ) : ?>
-                <div class="products-grid" id="productsGrid">
+                <div class="products-grid" id="productsGrid" data-product-grid>
                     <?php
                     while ( have_posts() ) :
                         the_post();
@@ -80,7 +80,10 @@ $total = wp_count_posts( 'mi_product' )->publish;
                 if ( $max_pages > 1 && $paged < $max_pages ) : ?>
                     <div class="ps-load-more-wrap" style="text-align:center;margin-top:48px;">
                         <a href="<?php echo esc_url( next_posts( $max_pages, false ) ); ?>"
-                           class="btn-default btn-pill ps-load-more" id="psLoadMore">
+                           class="btn-default btn-pill ps-load-more" id="psLoadMore"
+                           data-product-load-more
+                           data-next-page="2"
+                           data-loading="false">
                             Load More
                         </a>
                     </div>

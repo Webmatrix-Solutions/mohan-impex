@@ -927,3 +927,54 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     });
 });
+
+// Product archive: load the next 12 products without leaving the page.
+document.addEventListener('DOMContentLoaded', function () {
+    var loadMore = document.querySelector('[data-product-load-more]');
+    var grid = document.querySelector('[data-product-grid]');
+    if (!loadMore || !grid || !window.mohanImpexData) return;
+
+    loadMore.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (loadMore.dataset.loading === 'true') return;
+
+        loadMore.dataset.loading = 'true';
+        loadMore.textContent = 'Loading...';
+
+        var data = new FormData();
+        data.append('action', 'mohan_impex_load_products');
+        data.append('nonce', window.mohanImpexData.nonce);
+        data.append('page', loadMore.dataset.nextPage);
+
+        fetch(window.mohanImpexData.ajaxUrl, {
+            method: 'POST',
+            body: data,
+            credentials: 'same-origin'
+        })
+            .then(function (response) { return response.json(); })
+            .then(function (response) {
+                if (!response.success) throw new Error('Could not load products.');
+                grid.insertAdjacentHTML('beforeend', response.data.html);
+
+                if (response.data.has_more) {
+                    var nextPage = Number(loadMore.dataset.nextPage) + 1;
+                    loadMore.dataset.nextPage = String(nextPage);
+                    loadMore.href = response.data.next_url;
+                    loadMore.textContent = 'Load More';
+                    loadMore.dataset.loading = 'false';
+                } else {
+                    loadMore.parentNode.remove();
+                }
+
+                // Re-initialize AOS for new elements
+                if (typeof AOS !== 'undefined') {
+                    AOS.refresh();
+                }
+            })
+            .catch(function (error) {
+                console.error('Product load error:', error);
+                loadMore.textContent = 'Try Again';
+                loadMore.dataset.loading = 'false';
+            });
+    });
+});

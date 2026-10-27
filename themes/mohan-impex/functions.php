@@ -621,10 +621,42 @@ function mohan_impex_load_company_logos() {
         'next_url' => add_query_arg( 'paged', $page + 1, get_post_type_archive_link( $post_type ) ),
     ] );
 }
+add_action( 'wp_ajax_mohan_impex_load_company_logos', 'mohan_impex_load_company_logos' );
+add_action( 'wp_ajax_nopriv_mohan_impex_load_company_logos', 'mohan_impex_load_company_logos' );
 
 // ===============================================
-// Segment Functionalities CSV Importer
+// Load Products via AJAX
 // ===============================================
+function mohan_impex_load_products() {
+    check_ajax_referer( 'mohan_impex_load_logos', 'nonce' );
+
+    $page = max( 1, absint( $_POST['page'] ?? 1 ) );
+
+    $query = new WP_Query( [
+        'post_type'      => 'mi_product',
+        'post_status'    => 'publish',
+        'posts_per_page' => 12,
+        'paged'          => $page,
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+    ] );
+
+    ob_start();
+    while ( $query->have_posts() ) {
+        $query->the_post();
+        get_template_part( 'template-parts/product-segment/card', null, [ 'post_id' => get_the_ID() ] );
+    }
+    wp_reset_postdata();
+
+    wp_send_json_success( [
+        'html'     => ob_get_clean(),
+        'has_more' => $page < (int) $query->max_num_pages,
+        'next_url' => add_query_arg( 'paged', $page + 1, get_post_type_archive_link( 'mi_product' ) ),
+    ] );
+}
+add_action( 'wp_ajax_mohan_impex_load_products', 'mohan_impex_load_products' );
+add_action( 'wp_ajax_nopriv_mohan_impex_load_products', 'mohan_impex_load_products' );
+
 
 
 // These content types are archive-only. Direct item URLs return visitors to
