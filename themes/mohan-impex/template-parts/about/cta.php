@@ -25,7 +25,7 @@ $btn_text     = get_field( 'about_cta_btn_text' )  ?: 'Get in Touch';
 $btn_url      = get_field( 'about_cta_btn_url' )   ?: '/partner-with-us';
 $stat1_num    = get_field( 'about_cta_stat1_num' ) ?: '4.9';
 $stat1_lbl    = get_field( 'about_cta_stat1_lbl' ) ?: 'Average Partner Rating';
-$stat2_num    = get_field( 'about_cta_stat2_num' ) ?: '5000';
+$stat2_num    = get_field( 'about_cta_stat2_num' ) ?: '500';
 $stat2_lbl    = get_field( 'about_cta_stat2_lbl' ) ?: 'Customers Served Since 1994';
 
 $img_field    = get_field( 'about_cta_image' );
