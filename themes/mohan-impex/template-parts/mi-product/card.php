@@ -30,9 +30,16 @@ $img_alt   = get_the_title( $post_id );
 $permalink = get_permalink( $post_id );
 $title     = get_the_title( $post_id );
 $excerpt   = wp_trim_words( get_the_excerpt() ?: wp_strip_all_tags( get_post_field( 'post_content', $post_id ) ), 18, '...' );
-$pack_sizes = array_filter( array_map( static function( $item ) {
-    return $item['mip_meta_text'] ?? '';
-}, $meta_items ) );
+
+// Extract meta items text values, keeping all non-empty values
+$pack_sizes = [];
+if ( is_array( $meta_items ) ) {
+    foreach ( $meta_items as $item ) {
+        if ( ! empty( $item['mip_meta_text'] ) ) {
+            $pack_sizes[] = trim( $item['mip_meta_text'] );
+        }
+    }
+}
 ?>
 
 <div class="pc" data-aos="fade-up" data-aos-duration="700" data-aos-delay="<?php echo esc_attr( $aos_delay ); ?>"
