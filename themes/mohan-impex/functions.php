@@ -637,8 +637,8 @@ function mohan_impex_load_products() {
         'post_status'    => 'publish',
         'posts_per_page' => 12,
         'paged'          => $page,
-        'orderby'        => 'date',
-        'order'          => 'DESC',
+        'orderby'        => 'title',
+        'order'          => 'ASC',
     ] );
 
     ob_start();
@@ -672,7 +672,7 @@ add_action( 'template_redirect', function() {
 add_action( 'pre_get_posts', function( $query ) {
     if ( ! is_admin() && $query->is_main_query() && $query->is_post_type_archive( 'mi_product' ) ) {
         $query->set( 'posts_per_page', 12 );
-        $query->set( 'orderby', 'date' );
+        $query->set( 'orderby', 'title' );
         $query->set( 'order', 'ASC' );
     }
 } );

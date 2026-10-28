@@ -18,6 +18,7 @@
  */
 
 $title       = get_field( 'about_values_title' ) ?: 'Our Values Define';
+$title_hl    = get_field( 'about_values_title_hl' ) ?: 'Every Partnership';
 $items       = get_field( 'about_values_items' );
 
 if ( empty( $items ) ) {
@@ -50,9 +51,8 @@ if ( empty( $items ) ) {
     <div class="container au2-container">
         <div class="au2-values-head" data-aos="fade-up" data-aos-duration="700">
             <div>
-                <h2 class="section-heading text-white mb-2">
-                    <?php echo esc_html( $title ); ?><br>
-                    <span class="hero-highlight"><?php echo esc_html( $title_hl ); ?></span>
+                <h2 class="section-heading text-white" style="margin-bottom: 60px;">
+                    <?php echo esc_html( $title ); ?> <span class="hero-highlight"><?php echo esc_html( $title_hl ); ?></span>
                 </h2>
             </div>
         </div>

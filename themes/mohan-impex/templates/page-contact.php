@@ -295,6 +295,22 @@ if (
                             <a class="regional-office__detail" href="mailto:wh.patna@mohanimpex.co.in"><i class="fas fa-envelope"></i><span>wh.patna@mohanimpex.co.in / patnawarehouse@mohanimpex.com</span></a>
                             <div class="regional-office__address"><i class="fas fa-warehouse"></i><span>Ground Floor, Bari Pahari, Alamgunj, Patna - 800007, Bihar</span></div>
                         </article>
+
+                        <article class="regional-office" data-aos="fade-up" data-aos-delay="320" data-aos-duration="700">
+                            <div class="regional-office__city"><i class="fas fa-location-dot"></i><span>Delhi</span></div>
+                            <div class="regional-office__contact"><i class="fas fa-user"></i><span>Gopal Jaiswara</span></div>
+                            <a class="regional-office__detail" href="tel:9230777079"><i class="fas fa-phone-alt"></i><span>92307 77079</span></a>
+                            <a class="regional-office__detail" href="mailto:logistic4@mohanimpex.co.in"><i class="fas fa-envelope"></i><span>logistic4@mohanimpex.co.in</span></a>
+                            <div class="regional-office__address"><i class="fas fa-warehouse"></i><span>Stockarea W664, G/F KH NO 249/1 VILL- DHOOLSIRAS FIRNI ROAD NEW DELHI 110043</span></div>
+                        </article>
+
+                        <article class="regional-office" data-aos="fade-up" data-aos-delay="400" data-aos-duration="700">
+                            <div class="regional-office__city"><i class="fas fa-location-dot"></i><span>Mumbai</span></div>
+                            <div class="regional-office__contact"><i class="fas fa-user"></i><span>Gopal Jaiswara</span></div>
+                            <a class="regional-office__detail" href="tel:9230777079"><i class="fas fa-phone-alt"></i><span>92307 77079</span></a>
+                            <a class="regional-office__detail" href="mailto:logistic4@mohanimpex.co.in"><i class="fas fa-envelope"></i><span>logistic4@mohanimpex.co.in</span></a>
+                            <div class="regional-office__address"><i class="fas fa-warehouse"></i><span>404/A2, KHANDAGLE ESTATE PURNA VILLEGE, BHIWANDI, THANE MAHARASHTRA - 421302</span></div>
+                        </article>
                     </div>
                 </div>
             </section>

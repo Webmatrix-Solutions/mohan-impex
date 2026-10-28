@@ -676,9 +676,17 @@
         font-size: 11px;
     }
 
-    .au2-cta-inner {
-        flex-direction: column;
-        align-items: flex-start;
+    .au2-cta-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .au2-cta-img-wrap {
+        height: 320px;
+    }
+
+    .au2-cta-title {
+        font-size: clamp(32px, 5vw, 50px);
     }
 
     .faq2-main {
@@ -3798,7 +3806,7 @@
     }
 
     .about-hero {
-        min-height: 48svh;
+        min-height: 60svh;
     }
 
     .about-hero .hero-inner {
@@ -4140,6 +4148,14 @@
     .au2-cta-actions {
         flex-direction: column;
         width: 100%;
+    }
+
+    .au2-cta-img-wrap {
+        height: 280px;
+    }
+
+    .au2-cta-title {
+        font-size: 28px;
     }
 
     .au2-img-main {
@@ -5071,11 +5087,11 @@
 
     .partner-ticker__item {
         flex-basis: 215px;
-        height: 112px;
+        height: 147px;
         padding: 18px 24px;
     }
 
     .partner-ticker__item img {
-        max-height: 72px;
+        max-height: 107px;
     }
 }
