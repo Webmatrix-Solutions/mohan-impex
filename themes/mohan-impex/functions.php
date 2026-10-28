@@ -644,7 +644,7 @@ function mohan_impex_load_products() {
     ob_start();
     while ( $query->have_posts() ) {
         $query->the_post();
-        get_template_part( 'template-parts/product-segment/card', null, [ 'post_id' => get_the_ID() ] );
+        get_template_part( 'template-parts/mi-product/card', null, [ 'post_id' => get_the_ID(), 'archive_card' => true ] );
     }
     wp_reset_postdata();
 
