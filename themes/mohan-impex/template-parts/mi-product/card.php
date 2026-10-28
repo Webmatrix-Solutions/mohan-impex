@@ -33,10 +33,13 @@ $excerpt   = wp_trim_words( get_the_excerpt() ?: wp_strip_all_tags( get_post_fie
 
 // Extract meta items text values, keeping all non-empty values
 $pack_sizes = [];
-if ( is_array( $meta_items ) ) {
+if ( is_array( $meta_items ) && ! empty( $meta_items ) ) {
     foreach ( $meta_items as $item ) {
-        if ( ! empty( $item['mip_meta_text'] ) ) {
-            $pack_sizes[] = trim( $item['mip_meta_text'] );
+        $meta_text = isset( $item['mip_meta_text'] ) ? $item['mip_meta_text'] : '';
+        // Decode HTML entities and trim whitespace
+        $meta_text = trim( html_entity_decode( $meta_text, ENT_QUOTES, 'UTF-8' ) );
+        if ( ! empty( $meta_text ) ) {
+            $pack_sizes[] = $meta_text;
         }
     }
 }
