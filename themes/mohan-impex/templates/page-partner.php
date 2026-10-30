@@ -40,18 +40,22 @@ if (
     isset( $_POST['pw_nonce'] ) &&
     wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['pw_nonce'] ) ), 'pw_partner_form' )
 ) {
-    $old['full_name']    = sanitize_text_field( wp_unslash( $_POST['pw_full_name']    ?? '' ) );
-    $old['company']      = sanitize_text_field( wp_unslash( $_POST['pw_company']      ?? '' ) );
-    $old['biz_type']     = sanitize_text_field( wp_unslash( $_POST['pw_biz_type']     ?? '' ) );
-    $old['email']        = sanitize_email(       wp_unslash( $_POST['pw_email']        ?? '' ) );
-    $old['mobile']       = sanitize_text_field( wp_unslash( $_POST['pw_mobile']       ?? '' ) );
-    $old['city']         = sanitize_text_field( wp_unslash( $_POST['pw_city']         ?? '' ) );
-    $old['products']     = array_map( 'sanitize_text_field', (array) ( $_POST['pw_products'] ?? [] ) );
-    $old['monthly']      = sanitize_text_field( wp_unslash( $_POST['pw_monthly']      ?? '' ) );
-    $old['message']      = sanitize_textarea_field( wp_unslash( $_POST['pw_message']  ?? '' ) );
-    $old['privacy']      = isset( $_POST['pw_privacy'] );
+    $old['customer_name']   = sanitize_text_field( wp_unslash( $_POST['pw_customer_name']   ?? '' ) );
+    $old['organization']    = sanitize_text_field( wp_unslash( $_POST['pw_organization']    ?? '' ) );
+    $old['address']         = sanitize_textarea_field( wp_unslash( $_POST['pw_address']     ?? '' ) );
+    $old['landmark']        = sanitize_text_field( wp_unslash( $_POST['pw_landmark']        ?? '' ) );
+    $old['country']         = 'India';
+    $old['district']        = sanitize_text_field( wp_unslash( $_POST['pw_district']       ?? '' ) );
+    $old['pincode']         = sanitize_text_field( wp_unslash( $_POST['pw_pincode']        ?? '' ) );
+    $old['email']           = sanitize_email(       wp_unslash( $_POST['pw_email']          ?? '' ) );
+    $old['mobile']          = sanitize_text_field( wp_unslash( $_POST['pw_mobile']         ?? '' ) );
+    $old['lead_type']       = sanitize_text_field( wp_unslash( $_POST['pw_lead_type']      ?? '' ) );
+    $old['qty_required']    = sanitize_text_field( wp_unslash( $_POST['pw_qty_required']    ?? '' ) );
+    $old['products']        = array_map( 'sanitize_text_field', (array) ( $_POST['pw_products'] ?? [] ) );
+    $old['message']         = sanitize_textarea_field( wp_unslash( $_POST['pw_message']     ?? '' ) );
+    $old['privacy']         = isset( $_POST['pw_privacy'] );
 
-    if ( ! $old['full_name'] || ! $old['company'] || ! $old['email'] || ! $old['mobile'] || ! $old['city'] ) {
+    if ( ! $old['customer_name'] || ! $old['organization'] || ! $old['address'] || ! $old['district'] || ! $old['pincode'] || ! $old['email'] || ! $old['mobile'] || ! $old['lead_type'] ) {
         $form_error = 'Please fill in all required fields.';
     } elseif ( ! is_email( $old['email'] ) ) {
         $form_error = 'Please enter a valid email address.';
@@ -60,17 +64,21 @@ if (
     } else {
         $products_str = ! empty( $old['products'] ) ? implode( ', ', $old['products'] ) : '—';
         $to      = get_option( 'admin_email' );
-        $subject = "Partner Enquiry: {$old['full_name']} — {$old['company']}";
-        $body    = "Full Name: {$old['full_name']}\n"
-                 . "Company: {$old['company']}\n"
-                 . "Business Type: {$old['biz_type']}\n"
+        $subject = "Partner Enquiry: {$old['customer_name']} — {$old['organization']}";
+        $body    = "Customer Name: {$old['customer_name']}\n"
+                 . "Organization Name: {$old['organization']}\n"
+                 . "Address: {$old['address']}\n"
+                 . "Nearby Landmark: {$old['landmark']}\n"
+                 . "Country: {$old['country']}\n"
+                 . "District: {$old['district']}\n"
+                 . "Pincode: {$old['pincode']}\n"
                  . "Email: {$old['email']}\n"
                  . "Mobile: {$old['mobile']}\n"
-                 . "City / State: {$old['city']}\n"
+                 . "Lead Type: {$old['lead_type']}\n"
+                 . "Qty Required (Kgs): {$old['qty_required']}\n"
                  . "Products Interested In: {$products_str}\n"
-                 . "Monthly Requirement: {$old['monthly']}\n"
                  . "Message:\n{$old['message']}";
-        $headers = [ "Reply-To: {$old['full_name']} <{$old['email']}>" ];
+        $headers = [ "Reply-To: {$old['customer_name']} <{$old['email']}>" ];
 
         wp_mail( $to, $subject, $body, $headers );
         $form_success = true;
@@ -196,46 +204,84 @@ $product_options = [
                         <form method="post" action="<?php the_permalink(); ?>" novalidate>
                             <?php wp_nonce_field( 'pw_partner_form', 'pw_nonce' ); ?>
 
-                            <!-- Full Name -->
+                            <!-- Customer Name -->
                             <div class="cp-field">
-                                <div class="cp-label">Full Name <span class="pw-req">*</span></div>
+                                <div class="cp-label">Customer Name <span class="pw-req">*</span></div>
                                 <div class="cp-input-wrap">
-                                    <input class="cp-input" type="text" name="pw_full_name"
+                                    <input class="cp-input" type="text" name="pw_customer_name"
                                            placeholder="e.g. Ramesh Sharma"
-                                           value="<?php echo esc_attr( $old['full_name'] ?? '' ); ?>" required>
+                                           value="<?php echo esc_attr( $old['customer_name'] ?? '' ); ?>" required>
                                     <i class="fas fa-user"></i>
                                 </div>
                             </div>
 
-                            <!-- Company Name -->
+                            <!-- Organization Name -->
                             <div class="cp-field">
-                                <div class="cp-label">Company Name <span class="pw-req">*</span></div>
+                                <div class="cp-label">Organization Name <span class="pw-req">*</span></div>
                                 <div class="cp-input-wrap">
-                                    <input class="cp-input" type="text" name="pw_company"
+                                    <input class="cp-input" type="text" name="pw_organization"
                                            placeholder="e.g. ABC Traders Pvt. Ltd."
-                                           value="<?php echo esc_attr( $old['company'] ?? '' ); ?>" required>
+                                           value="<?php echo esc_attr( $old['organization'] ?? '' ); ?>" required>
                                     <i class="fas fa-building"></i>
                                 </div>
                             </div>
 
-                            <!-- Business Type -->
+                            <!-- Address -->
                             <div class="cp-field">
-                                <div class="cp-label">Business Type <span class="pw-req">*</span></div>
-                                <div class="cp-input-wrap">
-                                    <select class="cp-input cp-select" name="pw_biz_type" required>
-                                        <option value="" disabled <?php selected( empty( $old['biz_type'] ) ); ?>>Select business type…</option>
-                                        <?php foreach ( [ 'Distributor', 'Wholesaler', 'Manufacturer', 'Exporter', 'Chain / Retail', 'Other' ] as $opt ) : ?>
-                                            <option value="<?php echo esc_attr( $opt ); ?>"
-                                                <?php selected( ( $old['biz_type'] ?? '' ), $opt ); ?>>
-                                                <?php echo esc_html( $opt ); ?>
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                    <i class="fas fa-briefcase"></i>
+                                <div class="cp-label">Address <span class="pw-req">*</span></div>
+                                <div class="cp-input-wrap textarea-wrap">
+                                    <textarea class="cp-input cp-textarea" name="pw_address"
+                                              placeholder="e.g. 123 Main Street, Building Name…"
+                                              required><?php echo esc_textarea( $old['address'] ?? '' ); ?></textarea>
+                                    <i class="fas fa-map-marker-alt"></i>
                                 </div>
                             </div>
 
-                            <!-- Email + Mobile -->
+                            <!-- Nearby Landmark -->
+                            <div class="cp-field">
+                                <div class="cp-label">Nearby Landmark</div>
+                                <div class="cp-input-wrap">
+                                    <input class="cp-input" type="text" name="pw_landmark"
+                                           placeholder="e.g. Near Railway Station"
+                                           value="<?php echo esc_attr( $old['landmark'] ?? '' ); ?>">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                            </div>
+
+                            <!-- Country -->
+                            <div class="cp-field">
+                                <div class="cp-label">Country <span class="pw-req">*</span></div>
+                                <div class="cp-input-wrap">
+                                    <select class="cp-input cp-select" name="pw_country" disabled>
+                                        <option value="India" selected>India</option>
+                                    </select>
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                            </div>
+
+                            <!-- District -->
+                            <div class="cp-field">
+                                <div class="cp-label">District <span class="pw-req">*</span></div>
+                                <div class="cp-input-wrap">
+                                    <input class="cp-input" type="text" name="pw_district"
+                                           placeholder="e.g. Kolkata"
+                                           value="<?php echo esc_attr( $old['district'] ?? '' ); ?>" required>
+                                    <i class="fas fa-map"></i>
+                                </div>
+                            </div>
+
+                            <!-- Pincode -->
+                            <div class="cp-field">
+                                <div class="cp-label">Pincode <span class="pw-req">*</span></div>
+                                <div class="cp-input-wrap">
+                                    <input class="cp-input" type="text" name="pw_pincode"
+                                           placeholder="e.g. 700001"
+                                           value="<?php echo esc_attr( $old['pincode'] ?? '' ); ?>" required>
+                                    <i class="fas fa-map-pin"></i>
+                                </div>
+                            </div>
+
+                            <!-- Email + Phone Number -->
                             <div class="cp-field-row">
                                 <div class="cp-field">
                                     <div class="cp-label">Email Address <span class="pw-req">*</span></div>
@@ -247,7 +293,7 @@ $product_options = [
                                     </div>
                                 </div>
                                 <div class="cp-field">
-                                    <div class="cp-label">Mobile Number <span class="pw-req">*</span></div>
+                                    <div class="cp-label">Phone Number <span class="pw-req">*</span></div>
                                     <div class="cp-input-wrap">
                                         <input class="cp-input" type="tel" name="pw_mobile"
                                                placeholder="+91 98765 43210"
@@ -257,14 +303,31 @@ $product_options = [
                                 </div>
                             </div>
 
-                            <!-- City / State -->
+                            <!-- Lead Type -->
                             <div class="cp-field">
-                                <div class="cp-label">City / State <span class="pw-req">*</span></div>
+                                <div class="cp-label">Lead Type <span class="pw-req">*</span></div>
                                 <div class="cp-input-wrap">
-                                    <input class="cp-input" type="text" name="pw_city"
-                                           placeholder="e.g. Kolkata, West Bengal"
-                                           value="<?php echo esc_attr( $old['city'] ?? '' ); ?>" required>
-                                    <i class="fas fa-map-marker-alt"></i>
+                                    <select class="cp-input cp-select" name="pw_lead_type" required>
+                                        <option value="" disabled <?php selected( empty( $old['lead_type'] ) ); ?>>Select lead type…</option>
+                                        <?php foreach ( [ 'Direct customer', 'Distributor', 'Wholeseller', 'Online customers', 'Exporter' ] as $opt ) : ?>
+                                            <option value="<?php echo esc_attr( $opt ); ?>"
+                                                <?php selected( ( $old['lead_type'] ?? '' ), $opt ); ?>>
+                                                <?php echo esc_html( $opt ); ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <i class="fas fa-list"></i>
+                                </div>
+                            </div>
+
+                            <!-- Qty Required (Kg's Only) -->
+                            <div class="cp-field">
+                                <div class="cp-label">Qty Required (Kg's Only) <span class="pw-req">*</span></div>
+                                <div class="cp-input-wrap">
+                                    <input class="cp-input" type="text" name="pw_qty_required"
+                                           placeholder="e.g. 500"
+                                           value="<?php echo esc_attr( $old['qty_required'] ?? '' ); ?>" required>
+                                    <i class="fas fa-weight"></i>
                                 </div>
                             </div>
 
@@ -280,23 +343,6 @@ $product_options = [
                                             <span><?php echo esc_html( $prod ); ?></span>
                                         </label>
                                     <?php endforeach; ?>
-                                </div>
-                            </div>
-
-                            <!-- Monthly Requirement -->
-                            <div class="cp-field">
-                                <div class="cp-label">Monthly Requirement</div>
-                                <div class="cp-input-wrap">
-                                    <select class="cp-input cp-select" name="pw_monthly">
-                                        <option value="" disabled <?php selected( empty( $old['monthly'] ) ); ?>>Select volume…</option>
-                                        <?php foreach ( [ 'Above 1 Ton', '500 kg – 1 Ton', '100 kg – 500 kg', 'Below 100 kg', 'Not sure yet' ] as $opt ) : ?>
-                                            <option value="<?php echo esc_attr( $opt ); ?>"
-                                                <?php selected( ( $old['monthly'] ?? '' ), $opt ); ?>>
-                                                <?php echo esc_html( $opt ); ?>
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                    <i class="fas fa-weight-hanging"></i>
                                 </div>
                             </div>
 

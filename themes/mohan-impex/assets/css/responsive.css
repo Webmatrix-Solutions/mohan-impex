@@ -1547,6 +1547,11 @@
     .catv3-content h3 {
         font-size: 28px;
     }
+
+    .au2-cta-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
 }
 
 @media only screen and (max-width:900px) {
@@ -1639,6 +1644,15 @@
 
     .cta-r-overlay {
         padding: 32px;
+    }
+
+    .au2-cta-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .au2-cta-img-wrap {
+        height: 320px;
     }
 
     /* About hero buttons — min-width on mobile */
@@ -3115,6 +3129,11 @@
         grid-template-columns: 1fr
     }
 
+    .au2-cta-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
     .promo-right {
         display: none
     }
@@ -4143,6 +4162,11 @@
 
     .au2-team-grid .au2-member-card:nth-child(n) {
         margin-top: 0;
+    }
+
+    .au2-cta-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
     }
 
     .au2-cta-actions {

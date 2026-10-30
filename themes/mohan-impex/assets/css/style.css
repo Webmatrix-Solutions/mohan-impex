@@ -8714,7 +8714,7 @@ Category Section
 ====================================== */
 .hero {
     position: relative;
-    min-height: 60vh;
+    min-height: 480px;
     display: flex;
     align-items: flex-end;
     overflow: hidden;
@@ -8723,6 +8723,7 @@ Category Section
 .hero-bg {
     position: absolute;
     inset: 0;
+    min-height: 480px;
     background: url('../images/about/about-bgv2.jpeg') center/cover no-repeat;
     transform: scale(1.08);
     animation: bgIn 1.4s cubic-bezier(.25, .46, .45, .94) forwards;
@@ -8756,7 +8757,7 @@ Category Section
 }
 
 .about-hero {
-    min-height: 55vh;
+    min-height: 480px;
     padding: 65px 0;
 }
 
@@ -10549,7 +10550,8 @@ Category Section
 /* HERO */
 .shop-hero {
     position: relative;
-    padding: 165px 0 135px;
+    min-height: 480px;
+    padding: 76px 0 135px;
     overflow: hidden;
     background: var(--dark-color);
 }
@@ -10557,6 +10559,7 @@ Category Section
 .shop-hero-bg {
     position: absolute;
     inset: 0;
+    height: 480px;
     background: url('../images/mohan_impex-segments_hero_banner.jpg') center/cover;
     filter: brightness(.4) saturate(.6);
     animation: hBgDrift 20s ease-in-out infinite alternate;
@@ -11234,7 +11237,7 @@ Category Section
 
 /* Company logo archive cards. */
 .company-archive__hero {
-    height: 400px;
+    height: 493px;
 }
 
 .company-archive__listing {
